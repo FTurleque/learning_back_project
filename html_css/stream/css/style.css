@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+}
+
+.window_content {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+}
+
+.classement_menu {
+    background-color: aquamarine;
+}
+
+.classement_menu ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 15;
+    padding-left: 0;
+    
+}
+
+.classement_menu li {
+    list-style: none;
+    height: 250px;
+    /* padding-top: 50%; */
+    vertical-align: middle;
+
+}
+
+.classement_menu a {
+    text-decoration: none;
+}
+
+.action {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.animation {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.adventure {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.comedie {
+    grid-row: 4;
+    grid-column: 1;
+}
+
+.drama {
+    grid-row: 5;
+    grid-column: 1;
+}
+
+.family {
+    grid-row: 6;
+    grid-column: 1;
+}
+
+.fantastic {
+    grid-row: 7;
+    grid-column: 1;
+}
+
+.war {
+    grid-row: 8;
+    grid-column: 1;
+}
+
+.history {
+    grid-row: 9;
+    grid-column: 1;
+}
+
+.horror {
+    grid-row: 10;
+    grid-column: 1;
+}
+
+.music {
+    grid-row: 11;
+    grid-column: 1;
+}
+
+.sf {
+    grid-row: 12;
+    grid-column: 1;
+}
+
+.tv_movies {
+    grid-row: 13;
+    grid-column: 1;
+}
+
+.thriller {
+    grid-row: 14;
+    grid-column: 1;
+}
+
+.western {
+    grid-row: 15;
+    grid-column: 1;
+}
+
+/*
+.big_container {
+    grid-column: 2;
+}
+
+.bar_retract {
+    grid-template-columns: 1;
+}
+
+.container__slider {
+    display: flex;
+    flex-direction: row;
+}
+*/
+.item__image img {
+    width: 160px;
+    height: 230px;
+}
