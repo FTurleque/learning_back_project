@@ -1,0 +1,89 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --res: calc(0.10 * 1vmin); /*vmin c'est 1% du côté le plus petit*/
+}
+
+body {
+    background-image: repeating-radial-gradient(circle at center center, transparent 0px, transparent 13px,rgba(0,0,0,0.03) 13px, 
+                    rgba(0,0,0,0.03) 24px,transparent 24px, transparent 62px,rgba(0,0,0,0.03) 62px, rgba(0,0,0,0.03) 96px),
+                    repeating-radial-gradient(circle at center center, rgb(255,255,255) 0px, rgb(255,255,255) 14px,rgb(255,255,255) 14px, 
+                    rgb(255,255,255) 18px,rgb(255,255,255) 18px, rgb(255,255,255) 28px,rgb(255,255,255) 28px, rgb(255,255,255) 32px); background-size: 21px 21px;
+    height:100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    height:100vh;
+    width: 100vw;
+}
+@media screen and (max-width: 900px){
+    .container {
+        height: 60vh;
+    }
+}
+
+h1 {
+    font-family: Prata;
+    letter-spacing: 5px;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 10vw;
+    color: #333;
+    font-weight: 100;
+}
+
+.cercle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #222;
+    cursor: pointer;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    position: absolute;
+    transform: translate(0%, -50%) scale(0);
+    top: 55%;
+}
+
+.img1{
+    left: -5%;
+    width: calc(350 * var(--res));
+    z-index: 10;
+}
+
+.img2{
+    left: -5%;
+    width: calc(900 * var(--res));
+}
+
+
+.img3{
+    left: 25%;
+    width: calc(850 * var(--res));
+    z-index: 25;
+}
+
+.img4{
+    left: 55%;
+    width: calc(550 * var(--res));
+    z-index: 35;
+}
+
+.img5{
+    left: 65%;
+    width: calc(850 * var(--res));
+} 
