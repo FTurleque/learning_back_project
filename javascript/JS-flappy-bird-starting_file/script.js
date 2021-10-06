@@ -30,6 +30,7 @@ const setup = () => {
     flight = jump;
     flyHeight = (canvas.height / 2) - (size[1] / 2);
 
+    /** On va créer un tableau de 3 pipes */
     pipes = Array(3).fill().map((a, i) => [canvas.width + (i * (pipeGap + pipeWidth)), pipeLoc()]);
     // console.log(pipes);
 }
@@ -67,6 +68,13 @@ const render = () => {
 
             /** Bottom pipe */
             ctx.drawImage(img, 432 + pipeWidth, 108, pipeWidth, canvas.height - pipe[1] + pipeGap, pipe[0], pipe[1] + pipeGap, pipeWidth, canvas.height - pipe[1] + pipeGap);
+
+            if (pipe[0] <= -pipeWidth) {
+                currentScore++;
+                bestScore = Math.max(bestScore, currentScore);
+
+                /** Remove pipe and create new pipe */
+            }
         })
     } 
 
