@@ -74,9 +74,23 @@ const render = () => {
                 bestScore = Math.max(bestScore, currentScore);
 
                 /** Remove pipe and create new pipe */
+                pipes =  [...pipes.slice(1), [pipes[pipes.length - 1][0] + pipeGap + pipeWidth, pipeLoc()]];
+            }
+
+            /** if hit the pipe, end */
+            if ([
+                pipe[0] <= cTenth + size[0],
+                pipe[0] + pipeWidth >= cTenth,
+                pipe[1] > flyHeight || pipe[1] + pipeGap < flyHeight + size[1]
+            ].every(eLem => eLem)) {
+                gamePlaying = false;
+                setup();
             }
         })
-    } 
+    }
+
+    document.getElementById('bestScore').innerHTML = `Meilleur : ${bestScore}`;
+    document.getElementById('currentScore').innerHTML = `Meilleur : ${currentScore}`;
 
     window.requestAnimationFrame(render);
 }
