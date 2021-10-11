@@ -27,14 +27,13 @@
 
 }
 
-aside {
+.poster_container {
     grid-area: 1 / 1 / 8 / 4;
     background-color: azure;
     border-right: solid 5px black;
     display: grid;
     align-items: center;
     place-items: center;
-    background: no-repeat center center url("/javascript/streaming/img/007\ SPECTRE\ \(2015\).jpg");
 }
 
 .title_container {
@@ -46,7 +45,7 @@ aside {
     place-items: center;
 }
 
-.title_container h1 {
+.title {
     font-family: 'Fredericka the Great', cursive;
     font-size: 50px;
 }
@@ -64,18 +63,18 @@ aside {
     background-color: rgb(158, 158, 23);
     border-bottom: solid 5px black;
     display: grid;
-    grid-template: 1fr / repeat(5, 1fr);
-}
-
-.picture_actor_container {
-    margin: 10px;
-    display: inherit;
-    border-radius: 10%;
+    grid-template: 1fr / repeat(6, 1fr);
 }
 
 .picture_actor {
-    background-color: aqua;
-    background: no-repeat center/100% url(/javascript/streaming/img/arctors/6NRlV9oUipeak7r00V6k73Jb7we.jpg);
+    margin: 10px;
+    display: grid;
+    place-items: center;
+}
+
+.img_actor {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .synopsis {
@@ -97,7 +96,6 @@ p {
     border-left: solid 5px black;
     display: grid;
     align-items: center;
-    /* place-items: center; */
     padding-left: 25px;
 }
 
