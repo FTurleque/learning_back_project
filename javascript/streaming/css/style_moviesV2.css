@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Finger+Paint&family=Fredericka+the+Great&family=Macondo+Swash+Caps&family=Oregano&family=Salsa&family=Special+Elite&display=swap');
+/* font-family: 'Finger Paint', cursive; */
+/* font-family: 'Fredericka the Great', cursive; */
+/* font-family: 'Macondo Swash Caps', cursive; */
+/* font-family: 'Oregano', cursive; */
+/* font-family: 'Salsa', cursive; */
+/* font-family: 'Special Elite', cursive; */
+
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&family=Acme&family=Amaranth&family=Do+Hyeon&family=Gemunu+Libre&display=swap');
+/* font-family: 'Aclonica', sans-serif; */
+/* font-family: 'Acme', sans-serif; */
+/* font-family: 'Amaranth', sans-serif; */
+/* font-family: 'Do Hyeon', sans-serif; */
+/* font-family: 'Gemunu Libre', sans-serif; */
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 1920px;
+    height: 1080px;
+    background: no-repeat url("/javascript/streaming/img/background_img/tcf8WL3Lf1nWkOOT7SdhbS2kU6E.jpg");
+    background-size: contain;
+    overflow-x: hidden;
+}
+
+
+#winApp {
+    position: fixed;
+    max-height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template: repeat(28, 1fr) / repeat(28, 1fr);
+    background-color: #1f2528ab;
+    padding: 0 50px;
+}
+
+.title_container {
+    grid-area: 1 / 2 / 5 / 28;
+    display: inherit;
+    align-items: center;
+    place-items: center;
+}
+
+.title {
+    font-family: 'Macondo Swash Caps', cursive;
+    font-size: 80px;
+    color: white;
+}
+
+.info_movie {
+    grid-area: 5 / 2 / 27 / 28;
+    display: grid;
+    grid-template: repeat(22, 1fr) / repeat(26, 1fr);
+}
+
+.poster_container {
+    grid-area: 1 / 1 / 24 / 10;
+    display: grid;
+    max-height: 100%;
+}
+
+.poster {
+    background: content-box url("/javascript/streaming/img/007\ SPECTRE\ \(2015\).jpg") no-repeat;
+    background-size: contain;
+}
+
+.carousel_actor_movie {
+    grid-area: 1 / 10 / 9 / -1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.img_actor {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.synopsis {
+    grid-area: 10 / 10 / 20 / 21;
+    background-color: #1f2528de;
+    padding: 30px;
+    margin-right: 35px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+}
+
+.synopsis p {
+    font-family: 'Macondo Swash Caps', cursive;
+    font-size: 30px;
+    color: white;
+}
+
+.typeOfMovie {
+    grid-area: 10 / 21 / 20 / -1;
+    background-color: #1f2528de;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 30px;
+}
+
+.description {
+    list-style-type: none;
+
+}
+
+.description li {
+    font-family: 'Special Elite', cursive;
+    font-size: 25px;
+    color: #fff;
+}
+
+.nav_movie {
+    grid-area: 21 / 10 / 24 / -1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav_movie button {
+    padding: 0 70px;
+}
