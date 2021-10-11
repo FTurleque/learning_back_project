@@ -28,12 +28,13 @@
 }
 
 aside {
-    grid-area: 1 / 1 / -1 / 4;
+    grid-area: 1 / 1 / 8 / 4;
     background-color: azure;
     border-right: solid 5px black;
     display: grid;
     align-items: center;
     place-items: center;
+    background: no-repeat center center url("/javascript/streaming/img/007\ SPECTRE\ \(2015\).jpg");
 }
 
 .title_container {
@@ -43,6 +44,11 @@ aside {
     display: grid;
     align-items: center;
     place-items: center;
+}
+
+.title_container h1 {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 50px;
 }
 
 .info_movie {
@@ -63,8 +69,7 @@ aside {
 
 .picture_actor_container {
     margin: 10px;
-    /* background: no-repeat center/100% url(/javascript/streaming/img/arctors/6NRlV9oUipeak7r00V6k73Jb7we.jpg); */
-    /* background-color: aqua; */
+    display: inherit;
     border-radius: 10%;
 }
 
@@ -81,19 +86,37 @@ aside {
     padding: 20px;
 }
 
-.typeOfMovie {
-    grid-area: 3 / 4 / 7 / -1;
-    background-color: blueviolet;
-    border-left: solid 5px black;
-}
-
 p {
     font-family: 'Acme', sans-serif;
     font-size: 25px;
 }
 
+.typeOfMovie {
+    grid-area: 3 / 4 / 7 / -1;
+    background-color: rgb(163, 98, 224);
+    border-left: solid 5px black;
+    display: grid;
+    align-items: center;
+    /* place-items: center; */
+    padding-left: 25px;
+}
+
+.typeOfMovie ol {
+    list-style-type: none;
+    line-height: 3em;
+}
+
+.typeOfMovie li {
+    font-family: 'Special Elite', cursive;
+    font-size: 20px;
+}
+
+.typeOfMovie li strong {
+    color: brown;
+}
+
 .nav_movie {
-    grid-area: 7 / 1 / -1 / -1;
+    grid-area: 8 / 1 / -1 / -1;
     background-color: rgb(65, 59, 59);
     border-top: solid 5px black;
 
