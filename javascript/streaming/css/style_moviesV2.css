@@ -15,7 +15,7 @@
 
 *, ::before, ::after {
     box-sizing: border-box;
-    margin: 0;
+    margin: 0; 
     padding: 0;
 }
 
@@ -24,8 +24,8 @@ body {
     height: 1080px;
     background: no-repeat url("/javascript/streaming/img/background_img/tcf8WL3Lf1nWkOOT7SdhbS2kU6E.jpg");
     background-size: contain;
-    overflow: hidden;
-    display: flexbox;
+    /* overflow-y: hidden; */
+    /* display: flexbox; */
 }
 
 
@@ -35,7 +35,7 @@ body {
     width: 100%;
     display: grid;
     grid-template: repeat(28, 1fr) / repeat(28, 1fr);
-    background-color: #1f2528ab;
+    background-color: #1f252869;
     padding: 0 50px;
 }
 
@@ -123,8 +123,8 @@ body {
 }
 
 .nav_movie button {
-    padding: 0 70px;
-    background-color: #1f2528ab;
+    padding: 0 50px;
+    background-color: #1f2528c4;
     color: white;
     font-size: 20px;
 }
