@@ -20,11 +20,12 @@
 }
 
 body {
-    width: 1920px;
+    width: 100%;
     height: 1080px;
     background: no-repeat url("/javascript/streaming/img/background_img/tcf8WL3Lf1nWkOOT7SdhbS2kU6E.jpg");
     background-size: contain;
-    overflow-x: hidden;
+    overflow: hidden;
+    display: flexbox;
 }
 
 
@@ -123,4 +124,7 @@ body {
 
 .nav_movie button {
     padding: 0 70px;
+    background-color: #1f2528ab;
+    color: white;
+    font-size: 20px;
 }
