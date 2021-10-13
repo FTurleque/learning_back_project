@@ -70,18 +70,18 @@ body img {
     grid-template: repeat(7, 1fr) / repeat(34, 1fr);
 }
 
-.carousel_actor_movie img {
+.img_actor {
     max-width: 100%;
     max-height: 100%;
     cursor: pointer;
 }
 
-.picture_actor, .synopsis, .typeOfMovie, .btn {
+.img_actor, .synopsis, .typeOfMovie, .btn {
     box-shadow: 1vw 0.7vw .4vw rgba(128, 128, 128, 0.50);
 
 }
 
-.picture_actor:hover {
+.img_actor:hover {
     transform: scale(1.25);
     transition-duration: 300ms;
     border: solid 2px black;
@@ -144,14 +144,17 @@ body img {
 
 }
 
-.description li {
+.descriptionList {
     font-family: 'Oregano', cursive;
     font-size: 1.6vw;
     line-height: 1.7vw;
     color: #fff;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
 }
 
-.description li strong {
+.firstChildList {
     color: rgb(180, 63, 63);
 }
 

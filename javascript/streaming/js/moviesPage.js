@@ -43,30 +43,16 @@ window.onload = function() {
     const buttonElement4 = document.createElement('button');
 
 
-
     // Initialization
     mainElement.id = 'winApp';
     imgElementBody.src = "./img/background_img/tcf8WL3Lf1nWkOOT7SdhbS2kU6E.jpg";
 
-    headerElement.className = 'title_container';
-    h1Element.className = 'title';
-    h1Element.textContent = 'Spectre 2015';
-
     sectionInfoElement.className = 'info_movie';
     asideElement.className = 'poster_container';
-    posterElement.classList = 'poster';
-    posterElement.style.backgroundImage = "url('./img/007 SPECTRE (2015).jpg')";
-    posterElement.style.backgroundRepeat = 'no-repeat';
-    posterElement.style.backgroundSize = 'contain';
-
-
-
-
 
     // HTML placement
     document.body.appendChild(mainElement);
     mainElement.appendChild(headerElement);
-    headerElement.appendChild(h1Element);
     mainElement.appendChild(sectionInfoElement);
     sectionInfoElement.appendChild(asideElement);
 
@@ -77,10 +63,21 @@ window.onload = function() {
     addNavigationMovie();
 
     function addTitle() {
+        headerElement.className = 'title_container';
+        h1Element.className = 'title';
+        h1Element.textContent = 'Spectre 2015';
 
+
+        headerElement.appendChild(h1Element);
     }
     
     function addPoster() {
+        posterElement.classList = 'poster';
+        posterElement.style.backgroundImage = "url('./img/007 SPECTRE (2015).jpg')";
+        posterElement.style.backgroundRepeat = 'no-repeat';
+        posterElement.style.backgroundSize = 'contain';
+    
+    
         asideElement.appendChild(posterElement);
 
     }
@@ -135,22 +132,49 @@ window.onload = function() {
     }
     
     function addTypeOfMovie() {
+        // strongElement1.firstChild;
+        lidescriptionElement1.textContent = 'Spectre'; //
+        lidescriptionElement1.classList = 'descriptionList';
+
+        strongElement1.classList = 'firstChildList';
         strongElement1.textContent = 'Titre original :';
-        strongElement1.firstChild;
-        lidescriptionElement1.textContent = 'Spectre';
-        strongElement2.textContent = 'Réalisateur :';
+
         lidescriptionElement2.textContent = 'Sam Mendes';
-        strongElement3.textContent = 'Scénariste :';
+        lidescriptionElement2.classList = 'descriptionList';
+
+        strongElement2.classList = 'firstChildList';
+        strongElement2.textContent = 'Réalisateur :';
+
         lidescriptionElement3.textContent = 'John Logan, Neal Purvis';
-        strongElement4.textContent = 'Notation :';
+        lidescriptionElement3.classList = 'descriptionList';
+
+        strongElement3.classList = 'firstChildList';
+        strongElement3.textContent = 'Scénariste :';
+
         lidescriptionElement4.textContent = '';
-        strongElement5.textContent = 'Genre :';
+        lidescriptionElement4.classList = 'descriptionList';
+
+        strongElement4.classList = 'firstChildList';
+        strongElement4.textContent = 'Notation :';
+
         lidescriptionElement5.textContent = 'Action, Aventure, Thriller';
-        strongElement6.textContent = 'Pays :';
+        lidescriptionElement5.classList = 'descriptionList';
+
+        strongElement5.classList = 'firstChildList';
+        strongElement5.textContent = 'Genre :';
+
         lidescriptionElement6.textContent = 'USA';
-        strongElement7.textContent = 'Studio :';
+        lidescriptionElement6.classList = 'descriptionList';
+
+        strongElement6.classList = 'firstChildList';
+        strongElement6.textContent = 'Pays :';
+
         lidescriptionElement7.textContent = '';
-    
+        lidescriptionElement7.classList = 'descriptionList';
+
+        strongElement7.classList = 'firstChildList';
+        strongElement7.textContent = 'Studio :';
+
         sectionInfoElement.appendChild(typeOfMovieElement);
         typeOfMovieElement.appendChild(descriptionElement);
         descriptionElement.appendChild(lidescriptionElement1);
