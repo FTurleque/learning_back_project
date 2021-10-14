@@ -48,16 +48,12 @@ window.onload = function() {
     imgElementBody.src = "./img/background_img/tcf8WL3Lf1nWkOOT7SdhbS2kU6E.jpg";
     headerElement.className = 'title_container';
     sectionInfoElement.className = 'info_movie';
-    typeOfMovieElement.className = 'typeOfMovie';
 
 
     // HTML placement
     document.body.appendChild(mainElement);
     mainElement.appendChild(headerElement);
     mainElement.appendChild(sectionInfoElement);
-    sectionInfoElement.appendChild(asideElement);
-    sectionInfoElement.appendChild(typeOfMovieElement);
-    sectionInfoElement.appendChild(navigationElement);
 
 
     addTitle();
@@ -79,8 +75,9 @@ window.onload = function() {
         posterElement.style.backgroundImage = "url('./img/007 SPECTRE (2015).jpg')";
         posterElement.style.backgroundRepeat = 'no-repeat';
         posterElement.style.backgroundSize = 'contain';
-    
         asideElement.className = 'poster_container';
+        
+        sectionInfoElement.appendChild(asideElement);
         asideElement.appendChild(posterElement);
     }
     
@@ -133,8 +130,9 @@ window.onload = function() {
     }
     
     function addTypeOfMovie() {
-        // strongElement1.firstChild;
-        lidescriptionElement1.textContent = 'Spectre'; //
+        typeOfMovieElement.className = 'typeOfMovie';
+
+        lidescriptionElement1.textContent = 'Spectre';
         lidescriptionElement1.classList = 'descriptionList';
 
         strongElement1.classList = 'firstChildList';
@@ -176,6 +174,7 @@ window.onload = function() {
         strongElement7.classList = 'firstChildList';
         strongElement7.textContent = 'Studio :';
 
+        sectionInfoElement.appendChild(typeOfMovieElement);
         typeOfMovieElement.appendChild(descriptionElement);
         descriptionElement.appendChild(lidescriptionElement1);
         lidescriptionElement1.appendChild(strongElement1);
@@ -206,12 +205,14 @@ window.onload = function() {
         btnElement4.textContent = 'Même réalisateur';
         btnElement4.className = 'btn4 btn';
     
+        sectionInfoElement.appendChild(navigationElement);
         navigationElement.appendChild(btnElement1);
         navigationElement.appendChild(buttonElement2);
         navigationElement.appendChild(buttonElement3);
         navigationElement.appendChild(btnElement4);
     
-    }    document.body.appendChild(imgElementBody);
+    }    
+    document.body.appendChild(imgElementBody);
 }
 
 
