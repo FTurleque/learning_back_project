@@ -1,4 +1,3 @@
-window.onload = function() {
     // Elements constructor
     const mainElement = document.createElement('main');
     const imgElementBody = document.createElement('img');
@@ -43,6 +42,7 @@ window.onload = function() {
     const btnElement4 = document.createElement('button');
 
 
+window.onload = function() {
     // Initialization
     mainElement.id = 'winApp';
     imgElementBody.src = "./img/background_img/tcf8WL3Lf1nWkOOT7SdhbS2kU6E.jpg";
@@ -55,7 +55,6 @@ window.onload = function() {
     mainElement.appendChild(headerElement);
     mainElement.appendChild(sectionInfoElement);
 
-
     addTitle();
     addPoster();
     addCarouselActor();
@@ -63,156 +62,155 @@ window.onload = function() {
     addTypeOfMovie();
     addNavigationMovie();
 
-    function addTitle() {
-        h1Element.className = 'title';
-        h1Element.textContent = 'Spectre 2015';
-
-        headerElement.appendChild(h1Element);
-    }
-    
-    function addPoster() {
-        posterElement.classList = 'poster';
-        posterElement.style.backgroundImage = "url('./img/007 SPECTRE (2015).jpg')";
-        posterElement.style.backgroundRepeat = 'no-repeat';
-        posterElement.style.backgroundSize = 'contain';
-        asideElement.className = 'poster_container';
-        
-        sectionInfoElement.appendChild(asideElement);
-        asideElement.appendChild(posterElement);
-    }
-    
-    function addCarouselActor() {
-        carouselElement.className = 'carousel_actor_movie';
-        pictureActorElement1.className = 'picture_actor1 picture_actor';
-        actorElement1.src = './img/arctors/7JAUieStGsHZAy6ed2WuFy4CJjm.jpg';
-        actorElement1.className = 'img_actor';
-        actorElement1.alt = 'actor';
-        pictureActorElement2.className = 'picture_actor2 picture_actor';
-        actorElement2.src = './img/arctors/r3A7ev7QkjOGocVn3kQrJ0eOouk.jpg';
-        actorElement2.className = 'img_actor';
-        actorElement2.alt = 'actor';
-        pictureActorElement3.className = 'picture_actor3 picture_actor';
-        actorElement3.src = './img/arctors/dpX6WMQjJDD93YYaC9Wd6tgucuZ.jpg';
-        actorElement3.className = 'img_actor';
-        actorElement3.alt = 'actor';
-        pictureActorElement4.className = 'picture_actor4 picture_actor';
-        actorElement4.src = './img/arctors/mLnyw6k4K6tlBZF3JdvFMmq2NmZ.jpg';
-        actorElement4.className = 'img_actor';
-        actorElement4.alt = 'actor';
-        pictureActorElement5.className = 'picture_actor5 picture_actor';
-        actorElement5.src = './img/arctors/sXTP6wlqIDz1tDGLU3DFbklSTpq.jpg';
-        actorElement5.className = 'img_actor';
-        actorElement5.alt = 'actor';
-    
-        sectionInfoElement.appendChild(carouselElement);
-        carouselElement.appendChild(pictureActorElement1);
-        pictureActorElement1.appendChild(actorElement1);
-        carouselElement.appendChild(pictureActorElement2);
-        pictureActorElement2.appendChild(actorElement2);
-        carouselElement.appendChild(pictureActorElement3);
-        pictureActorElement3.appendChild(actorElement3);
-        carouselElement.appendChild(pictureActorElement4);
-        pictureActorElement4.appendChild(actorElement4);
-        carouselElement.appendChild(pictureActorElement5);
-        pictureActorElement5.appendChild(actorElement5);
-    
-    }
-    
-    function addSynopsis() {
-        synopsisElement.className = 'synopsis';
-        pSynopsisElement.textContent = 'Un message cryptique venu tout droit de son passé pousse Bond à enquêter sur une sinistre organisation. Alors que M affronte une tempête politique pour que les services secrets puissentcontinuer à opérer, Bond s’échine à révéler la terrible vérité derrière… le Spectre.'
-    
-        descriptionElement.className = 'description';
-    
-        sectionInfoElement.appendChild(synopsisElement);
-        synopsisElement.appendChild(pSynopsisElement);
-    
-    }
-    
-    function addTypeOfMovie() {
-        typeOfMovieElement.className = 'typeOfMovie';
-
-        lidescriptionElement1.textContent = 'Spectre';
-        lidescriptionElement1.classList = 'descriptionList';
-
-        strongElement1.classList = 'firstChildList';
-        strongElement1.textContent = 'Titre original :';
-
-        lidescriptionElement2.textContent = 'Sam Mendes';
-        lidescriptionElement2.classList = 'descriptionList';
-
-        strongElement2.classList = 'firstChildList';
-        strongElement2.textContent = 'Réalisateur :';
-
-        lidescriptionElement3.textContent = 'John Logan, Neal Purvis';
-        lidescriptionElement3.classList = 'descriptionList';
-
-        strongElement3.classList = 'firstChildList';
-        strongElement3.textContent = 'Scénariste :';
-
-        lidescriptionElement4.textContent = '';
-        lidescriptionElement4.classList = 'descriptionList';
-
-        strongElement4.classList = 'firstChildList';
-        strongElement4.textContent = 'Notation :';
-
-        lidescriptionElement5.textContent = 'Action, Aventure, Thriller';
-        lidescriptionElement5.classList = 'descriptionList';
-
-        strongElement5.classList = 'firstChildList';
-        strongElement5.textContent = 'Genre :';
-
-        lidescriptionElement6.textContent = 'USA';
-        lidescriptionElement6.classList = 'descriptionList';
-
-        strongElement6.classList = 'firstChildList';
-        strongElement6.textContent = 'Pays :';
-
-        lidescriptionElement7.textContent = '';
-        lidescriptionElement7.classList = 'descriptionList';
-
-        strongElement7.classList = 'firstChildList';
-        strongElement7.textContent = 'Studio :';
-
-        sectionInfoElement.appendChild(typeOfMovieElement);
-        typeOfMovieElement.appendChild(descriptionElement);
-        descriptionElement.appendChild(lidescriptionElement1);
-        lidescriptionElement1.appendChild(strongElement1);
-        descriptionElement.appendChild(lidescriptionElement2);
-        lidescriptionElement2.appendChild(strongElement2);
-        descriptionElement.appendChild(lidescriptionElement3);
-        lidescriptionElement3.appendChild(strongElement3);
-        descriptionElement.appendChild(lidescriptionElement4);
-        lidescriptionElement4.appendChild(strongElement4);
-        descriptionElement.appendChild(lidescriptionElement5);
-        lidescriptionElement5.appendChild(strongElement5);
-        descriptionElement.appendChild(lidescriptionElement6);
-        lidescriptionElement6.appendChild(strongElement6);
-        descriptionElement.appendChild(lidescriptionElement7);
-        lidescriptionElement7.appendChild(strongElement7);
-    
-    }
-    
-    function addNavigationMovie() {
-    
-        navigationElement.className = 'nav_movie';
-        btnElement1.textContent = 'Lecture';
-        btnElement1.className = 'btn1 btn';
-        buttonElement2.textContent = 'Bande-annonce';
-        buttonElement2.className = 'btn2 btn';
-        buttonElement3.textContent = 'Ma notation';
-        buttonElement3.className = 'btn3 btn';
-        btnElement4.textContent = 'Même réalisateur';
-        btnElement4.className = 'btn4 btn';
-    
-        sectionInfoElement.appendChild(navigationElement);
-        navigationElement.appendChild(btnElement1);
-        navigationElement.appendChild(buttonElement2);
-        navigationElement.appendChild(buttonElement3);
-        navigationElement.appendChild(btnElement4);
-    
-    }    
     document.body.appendChild(imgElementBody);
 }
 
+function addTitle() {
+    h1Element.className = 'title';
+    h1Element.textContent = `Spectre 2015`;
+
+    headerElement.appendChild(h1Element);
+}
+
+function addPoster() {
+    asideElement.className = 'poster_container';
+    posterElement.classList = 'poster';
+    posterElement.style.backgroundImage = `url('./img/007 SPECTRE (2015).jpg')`;
+    posterElement.style.backgroundRepeat = 'no-repeat';
+    posterElement.style.backgroundSize = 'contain';
+    
+    sectionInfoElement.appendChild(asideElement);
+    asideElement.appendChild(posterElement);
+}
+
+function addCarouselActor() {
+    carouselElement.className = 'carousel_actor_movie';
+    pictureActorElement1.className = 'picture_actor1 picture_actor';
+    actorElement1.src = `./img/arctors/7JAUieStGsHZAy6ed2WuFy4CJjm.jpg`;
+    actorElement1.className = 'img_actor';
+    actorElement1.alt = 'actor';
+    pictureActorElement2.className = 'picture_actor2 picture_actor';
+    actorElement2.src = `./img/arctors/r3A7ev7QkjOGocVn3kQrJ0eOouk.jpg`;
+    actorElement2.className = 'img_actor';
+    actorElement2.alt = 'actor';
+    pictureActorElement3.className = 'picture_actor3 picture_actor';
+    actorElement3.src = `./img/arctors/dpX6WMQjJDD93YYaC9Wd6tgucuZ.jpg`;
+    actorElement3.className = 'img_actor';
+    actorElement3.alt = 'actor';
+    pictureActorElement4.className = 'picture_actor4 picture_actor';
+    actorElement4.src = `./img/arctors/mLnyw6k4K6tlBZF3JdvFMmq2NmZ.jpg`;
+    actorElement4.className = 'img_actor';
+    actorElement4.alt = 'actor';
+    pictureActorElement5.className = 'picture_actor5 picture_actor';
+    actorElement5.src = `./img/arctors/sXTP6wlqIDz1tDGLU3DFbklSTpq.jpg`;
+    actorElement5.className = 'img_actor';
+    actorElement5.alt = 'actor';
+
+    sectionInfoElement.appendChild(carouselElement);
+    carouselElement.appendChild(pictureActorElement1);
+    pictureActorElement1.appendChild(actorElement1);
+    carouselElement.appendChild(pictureActorElement2);
+    pictureActorElement2.appendChild(actorElement2);
+    carouselElement.appendChild(pictureActorElement3);
+    pictureActorElement3.appendChild(actorElement3);
+    carouselElement.appendChild(pictureActorElement4);
+    pictureActorElement4.appendChild(actorElement4);
+    carouselElement.appendChild(pictureActorElement5);
+    pictureActorElement5.appendChild(actorElement5);
+
+}
+
+function addSynopsis() {
+    synopsisElement.className = 'synopsis';
+    pSynopsisElement.textContent = `Un message cryptique venu tout droit de son passé pousse Bond à enquêter sur une sinistre organisation. Alors que M affronte une tempête politique pour que les services secrets puissentcontinuer à opérer, Bond s’échine à révéler la terrible vérité derrière… le Spectre.`;
+
+    sectionInfoElement.appendChild(synopsisElement);
+    synopsisElement.appendChild(pSynopsisElement);
+
+}
+
+function addTypeOfMovie() {
+    typeOfMovieElement.className = 'typeOfMovie';
+    descriptionElement.className = 'description';
+
+    lidescriptionElement1.textContent = 'Spectre';
+    lidescriptionElement1.className = 'descriptionList';
+
+    strongElement1.className = 'firstChildList';
+    strongElement1.textContent = 'Titre original :';
+
+    lidescriptionElement2.textContent = 'Sam Mendes';
+    lidescriptionElement2.className = 'descriptionList';
+
+    strongElement2.className = 'firstChildList';
+    strongElement2.textContent = 'Réalisateur :';
+
+    lidescriptionElement3.textContent = 'John Logan, Neal Purvis';
+    lidescriptionElement3.className = 'descriptionList';
+
+    strongElement3.className = 'firstChildList';
+    strongElement3.textContent = 'Scénariste :';
+
+    lidescriptionElement4.textContent = '';
+    lidescriptionElement4.className = 'descriptionList';
+
+    strongElement4.className = 'firstChildList';
+    strongElement4.textContent = 'Notation :';
+
+    lidescriptionElement5.textContent = 'Action, Aventure, Thriller';
+    lidescriptionElement5.className = 'descriptionList';
+
+    strongElement5.className = 'firstChildList';
+    strongElement5.textContent = 'Genre :';
+
+    lidescriptionElement6.textContent = 'USA';
+    lidescriptionElement6.className = 'descriptionList';
+
+    strongElement6.className = 'firstChildList';
+    strongElement6.textContent = 'Pays :';
+
+    lidescriptionElement7.textContent = '';
+    lidescriptionElement7.className = 'descriptionList';
+
+    strongElement7.className = 'firstChildList';
+    strongElement7.textContent = 'Studio :';
+
+    sectionInfoElement.appendChild(typeOfMovieElement);
+    typeOfMovieElement.appendChild(descriptionElement);
+    descriptionElement.appendChild(lidescriptionElement1);
+    lidescriptionElement1.appendChild(strongElement1);
+    descriptionElement.appendChild(lidescriptionElement2);
+    lidescriptionElement2.appendChild(strongElement2);
+    descriptionElement.appendChild(lidescriptionElement3);
+    lidescriptionElement3.appendChild(strongElement3);
+    descriptionElement.appendChild(lidescriptionElement4);
+    lidescriptionElement4.appendChild(strongElement4);
+    descriptionElement.appendChild(lidescriptionElement5);
+    lidescriptionElement5.appendChild(strongElement5);
+    descriptionElement.appendChild(lidescriptionElement6);
+    lidescriptionElement6.appendChild(strongElement6);
+    descriptionElement.appendChild(lidescriptionElement7);
+    lidescriptionElement7.appendChild(strongElement7);
+
+}
+
+function addNavigationMovie() {
+
+    navigationElement.className = 'nav_movie';
+    btnElement1.textContent = 'Lecture';
+    btnElement1.className = 'btn1 btn';
+    buttonElement2.textContent = 'Bande-annonce';
+    buttonElement2.className = 'btn2 btn';
+    buttonElement3.textContent = 'Ma notation';
+    buttonElement3.className = 'btn3 btn';
+    btnElement4.textContent = 'Même réalisateur';
+    btnElement4.className = 'btn4 btn';
+
+    sectionInfoElement.appendChild(navigationElement);
+    navigationElement.appendChild(btnElement1);
+    navigationElement.appendChild(buttonElement2);
+    navigationElement.appendChild(buttonElement3);
+    navigationElement.appendChild(btnElement4);
+
+}    
 
