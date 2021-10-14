@@ -37,25 +37,30 @@ window.onload = function() {
     const lidescriptionElement7 = document. createElement('li');
     const strongElement7 = document.createElement('strong');
     const navigationElement = document.createElement('div');
-    const buttonElement1 = document.createElement('button');
+    const btnElement1 = document.createElement('button');
     const buttonElement2 = document.createElement('button');
     const buttonElement3 = document.createElement('button');
-    const buttonElement4 = document.createElement('button');
+    const btnElement4 = document.createElement('button');
 
 
     // Initialization
     mainElement.id = 'winApp';
     imgElementBody.src = "./img/background_img/tcf8WL3Lf1nWkOOT7SdhbS2kU6E.jpg";
-
+    headerElement.className = 'title_container';
     sectionInfoElement.className = 'info_movie';
-    asideElement.className = 'poster_container';
+    typeOfMovieElement.className = 'typeOfMovie';
+
 
     // HTML placement
     document.body.appendChild(mainElement);
     mainElement.appendChild(headerElement);
     mainElement.appendChild(sectionInfoElement);
     sectionInfoElement.appendChild(asideElement);
+    sectionInfoElement.appendChild(typeOfMovieElement);
+    sectionInfoElement.appendChild(navigationElement);
 
+
+    addTitle();
     addPoster();
     addCarouselActor();
     addSynopsis();
@@ -63,10 +68,8 @@ window.onload = function() {
     addNavigationMovie();
 
     function addTitle() {
-        headerElement.className = 'title_container';
         h1Element.className = 'title';
         h1Element.textContent = 'Spectre 2015';
-
 
         headerElement.appendChild(h1Element);
     }
@@ -77,9 +80,8 @@ window.onload = function() {
         posterElement.style.backgroundRepeat = 'no-repeat';
         posterElement.style.backgroundSize = 'contain';
     
-    
+        asideElement.className = 'poster_container';
         asideElement.appendChild(posterElement);
-
     }
     
     function addCarouselActor() {
@@ -123,7 +125,6 @@ window.onload = function() {
         synopsisElement.className = 'synopsis';
         pSynopsisElement.textContent = 'Un message cryptique venu tout droit de son passé pousse Bond à enquêter sur une sinistre organisation. Alors que M affronte une tempête politique pour que les services secrets puissentcontinuer à opérer, Bond s’échine à révéler la terrible vérité derrière… le Spectre.'
     
-        typeOfMovieElement.className = 'typeOfMovie';
         descriptionElement.className = 'description';
     
         sectionInfoElement.appendChild(synopsisElement);
@@ -175,7 +176,6 @@ window.onload = function() {
         strongElement7.classList = 'firstChildList';
         strongElement7.textContent = 'Studio :';
 
-        sectionInfoElement.appendChild(typeOfMovieElement);
         typeOfMovieElement.appendChild(descriptionElement);
         descriptionElement.appendChild(lidescriptionElement1);
         lidescriptionElement1.appendChild(strongElement1);
@@ -191,26 +191,25 @@ window.onload = function() {
         lidescriptionElement6.appendChild(strongElement6);
         descriptionElement.appendChild(lidescriptionElement7);
         lidescriptionElement7.appendChild(strongElement7);
-        sectionInfoElement.appendChild(navigationElement);
     
     }
     
     function addNavigationMovie() {
     
         navigationElement.className = 'nav_movie';
-        buttonElement1.textContent = 'Lecture';
-        buttonElement1.className = 'btn1 btn';
+        btnElement1.textContent = 'Lecture';
+        btnElement1.className = 'btn1 btn';
         buttonElement2.textContent = 'Bande-annonce';
         buttonElement2.className = 'btn2 btn';
         buttonElement3.textContent = 'Ma notation';
         buttonElement3.className = 'btn3 btn';
-        buttonElement4.textContent = 'Même réalisateur';
-        buttonElement4.className = 'btn4 btn';
+        btnElement4.textContent = 'Même réalisateur';
+        btnElement4.className = 'btn4 btn';
     
-        navigationElement.appendChild(buttonElement1);
+        navigationElement.appendChild(btnElement1);
         navigationElement.appendChild(buttonElement2);
         navigationElement.appendChild(buttonElement3);
-        navigationElement.appendChild(buttonElement4);
+        navigationElement.appendChild(btnElement4);
     
     }    document.body.appendChild(imgElementBody);
 }
