@@ -41,14 +41,15 @@
     const buttonElement3 = document.createElement('button');
     const btnElement4 = document.createElement('button');
 
+    
 
-window.onload = function() {
     // Initialization
     mainElement.id = 'winApp';
     imgElementBody.src = `./img/background_img/tcf8WL3Lf1nWkOOT7SdhbS2kU6E.jpg`;
     headerElement.className = 'title_container';
     sectionInfoElement.className = 'info_movie';
-
+    
+window.onload = function() {
 
     // HTML placement
     document.body.appendChild(mainElement);
@@ -74,7 +75,7 @@ function addTitle() {
 
 function addPoster() {
     asideElement.className = 'poster_container';
-    posterElement.classList = 'poster';
+    posterElement.className = 'poster';
     posterElement.style.backgroundImage = `url('./img/007 SPECTRE (2015).jpg')`;
     posterElement.style.backgroundRepeat = 'no-repeat';
     posterElement.style.backgroundSize = 'contain';
@@ -135,43 +136,36 @@ function addTypeOfMovie() {
 
     lidescriptionElement1.textContent = `Spectre`;
     lidescriptionElement1.className = 'descriptionList';
-
     strongElement1.className = 'firstChildList';
     strongElement1.textContent = 'Titre original :';
 
     lidescriptionElement2.textContent = `Sam Mendes`;
     lidescriptionElement2.className = 'descriptionList';
-
     strongElement2.className = 'firstChildList';
     strongElement2.textContent = 'Réalisateur :';
 
     lidescriptionElement3.textContent = `John Logan, Neal Purvis`;
     lidescriptionElement3.className = 'descriptionList';
-
     strongElement3.className = 'firstChildList';
     strongElement3.textContent = 'Scénariste :';
 
     lidescriptionElement4.textContent = ``;
     lidescriptionElement4.className = 'descriptionList';
-
     strongElement4.className = 'firstChildList';
     strongElement4.textContent = 'Notation :';
 
     lidescriptionElement5.textContent = `Action, Aventure, Thriller`;
     lidescriptionElement5.className = 'descriptionList';
-
     strongElement5.className = 'firstChildList';
     strongElement5.textContent = 'Genre :';
 
     lidescriptionElement6.textContent = `USA`;
     lidescriptionElement6.className = 'descriptionList';
-
     strongElement6.className = 'firstChildList';
     strongElement6.textContent = 'Pays :';
 
     lidescriptionElement7.textContent = ``;
     lidescriptionElement7.className = 'descriptionList';
-
     strongElement7.className = 'firstChildList';
     strongElement7.textContent = 'Studio :';
 
