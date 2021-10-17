@@ -23,18 +23,25 @@
     const descriptionElement = document.createElement('ol');
     const lidescriptionElement1 = document. createElement('li');
     const strongElement1 = document.createElement('strong');
+    const aElement1 = document.createElement('a');
     const lidescriptionElement2 = document. createElement('li');
     const strongElement2 = document.createElement('strong');
+    const aElement2 = document.createElement('a');
     const lidescriptionElement3 = document. createElement('li');
     const strongElement3 = document.createElement('strong');
+    const aElement3 = document.createElement('a');
     const lidescriptionElement4 = document. createElement('li');
     const strongElement4 = document.createElement('strong');
+    const aElement4 = document.createElement('a');
     const lidescriptionElement5 = document. createElement('li');
     const strongElement5 = document.createElement('strong');
+    const aElement5 = document.createElement('a');
     const lidescriptionElement6 = document. createElement('li');
     const strongElement6 = document.createElement('strong');
+    const aElement6 = document.createElement('a');
     const lidescriptionElement7 = document. createElement('li');
     const strongElement7 = document.createElement('strong');
+    const aElement7 = document.createElement('a');
     const navigationElement = document.createElement('div');
     const btnElement1 = document.createElement('button');
     const buttonElement2 = document.createElement('button');
@@ -134,57 +141,71 @@ function addTypeOfMovie() {
     typeOfMovieElement.className = 'typeOfMovie';
     descriptionElement.className = 'description';
 
-    lidescriptionElement1.textContent = `Spectre`;
     lidescriptionElement1.className = 'descriptionList';
     strongElement1.className = 'firstChildList';
     strongElement1.textContent = 'Titre original :';
+    aElement1.className = '';
+    aElement1.textContent = `Spectre`;
 
-    lidescriptionElement2.textContent = `Sam Mendes`;
     lidescriptionElement2.className = 'descriptionList';
     strongElement2.className = 'firstChildList';
     strongElement2.textContent = 'Réalisateur :';
+    aElement2.className = '';
+    aElement2.textContent = `Sam Mendes`;
 
-    lidescriptionElement3.textContent = `John Logan, Neal Purvis`;
     lidescriptionElement3.className = 'descriptionList';
     strongElement3.className = 'firstChildList';
     strongElement3.textContent = 'Scénariste :';
+    aElement3.className = '';
+    aElement3.textContent = `John Logan, Neal Purvis`;
 
-    lidescriptionElement4.textContent = ``;
     lidescriptionElement4.className = 'descriptionList';
     strongElement4.className = 'firstChildList';
     strongElement4.textContent = 'Notation :';
+    aElement4.className = '';
+    aElement4.textContent = ``;
 
-    lidescriptionElement5.textContent = `Action, Aventure, Thriller`;
     lidescriptionElement5.className = 'descriptionList';
     strongElement5.className = 'firstChildList';
     strongElement5.textContent = 'Genre :';
+    aElement5.className = '';
+    aElement5.textContent = `Action, Aventure, Thriller`;
 
-    lidescriptionElement6.textContent = `USA`;
     lidescriptionElement6.className = 'descriptionList';
     strongElement6.className = 'firstChildList';
     strongElement6.textContent = 'Pays :';
+    aElement6.className = '';
+    aElement6.textContent = `USA`;
 
-    lidescriptionElement7.textContent = ``;
     lidescriptionElement7.className = 'descriptionList';
     strongElement7.className = 'firstChildList';
     strongElement7.textContent = 'Studio :';
+    aElement7.className = '';
+    aElement7.textContent = ``;
 
     sectionInfoElement.appendChild(typeOfMovieElement);
     typeOfMovieElement.appendChild(descriptionElement);
     descriptionElement.appendChild(lidescriptionElement1);
     lidescriptionElement1.appendChild(strongElement1);
+    lidescriptionElement1.appendChild(aElement1);
     descriptionElement.appendChild(lidescriptionElement2);
     lidescriptionElement2.appendChild(strongElement2);
+    lidescriptionElement2.appendChild(aElement2);
     descriptionElement.appendChild(lidescriptionElement3);
     lidescriptionElement3.appendChild(strongElement3);
+    lidescriptionElement3.appendChild(aElement3);
     descriptionElement.appendChild(lidescriptionElement4);
     lidescriptionElement4.appendChild(strongElement4);
+    lidescriptionElement4.appendChild(aElement4);
     descriptionElement.appendChild(lidescriptionElement5);
     lidescriptionElement5.appendChild(strongElement5);
+    lidescriptionElement5.appendChild(aElement5);
     descriptionElement.appendChild(lidescriptionElement6);
     lidescriptionElement6.appendChild(strongElement6);
+    lidescriptionElement6.appendChild(aElement6);
     descriptionElement.appendChild(lidescriptionElement7);
     lidescriptionElement7.appendChild(strongElement7);
+    lidescriptionElement7.appendChild(aElement7);
 
 }
 

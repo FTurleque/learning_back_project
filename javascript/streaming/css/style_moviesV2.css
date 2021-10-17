@@ -36,13 +36,12 @@ body img {
     max-height: 100%;
     width: 100%;
     display: grid;
-    grid-template: repeat(28, 1fr) / repeat(28, 1fr);
+    grid-template: repeat(28, 1fr) / repeat(56, 1fr);
     background-color: #1f252869;
-    padding: 0 50px;
 }
 
 .title_container {
-    grid-area: 1 / 2 / 5 / 28;
+    grid-area: 1 / 2 / 5 / 56;
     display: inherit;
     align-items: center;
     place-items: center;
@@ -55,21 +54,22 @@ body img {
 }
 
 .info_movie {
-    grid-area: 5 / 2 / 27 / 28;
+    grid-area: 5 / 3 / 27 / 55;
     display: grid;
-    grid-template: repeat(22, 1fr) / repeat(26, 1fr);
+    grid-template: repeat(22, 1fr) / repeat(104, 1fr);
 }
 
 .poster_container {
-    grid-area: 1 / 1 / 24 / 10;
+    grid-area: 1 / 1 / 24 / 38;
     display: grid;
     max-height: 100%;
 }
 
 .carousel_actor_movie {
-    grid-area: 1 / 10 / 8 / -1;
-    display: grid;
-    grid-template: repeat(7, 1fr) / repeat(34, 1fr);
+    grid-area: 1 / 38 / 8 / -1;
+    display: flex;
+    justify-content: space-between;
+    /* grid-template: repeat(7, 1fr) / repeat(34, 1fr); */
 }
 
 .img_actor {
@@ -113,7 +113,7 @@ body img {
 
 
 .synopsis {
-    grid-area: 9 / 10 / 19 / 20;
+    grid-area: 9 / 38 / 19 / 76;
     background-color: #1f2528de;
     padding: 30px;
     display: flex;
@@ -134,7 +134,7 @@ body img {
 }
 
 .typeOfMovie {
-    grid-area: 9 / 21 / 19 / -1;
+    grid-area: 9 / 81 / 19 / -1;
     background-color: #1f2528de;
     display: flex;
     align-items: center;
@@ -148,21 +148,30 @@ body img {
 }
 
 .descriptionList {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.descriptionList a {
     font-family: 'Oregano', cursive;
     font-size: 1.6vw;
     line-height: 1.7vw;
     color: #fff;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: start;
+    /* margin-left: 5px; */
 }
 
 .firstChildList {
+    font-family: 'Oregano', cursive;
+    font-size: 1.6vw;
+    line-height: 1.7vw;
     color: rgb(180, 63, 63);
+    margin-right: 5px;
+    white-space: nowrap;
 }
 
 .nav_movie {
-    grid-area: 20 / 10 / 24 / -1;
+    grid-area: 20 / 38 / 24 / -1;
     display: grid;
     grid-template: repeat(2, 1fr) / repeat(17, 1fr);
 }
