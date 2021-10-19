@@ -6,7 +6,7 @@ const search = document.getElementById('search');
 
 
 const getMovie = async function(_keyword) {
-    let url = searchURL + '&query=' + _keyword;
+    let url = searchURL + '&query=' + _keyword + '&language=fr-FR';
     try {
         let response = await fetch(url);
         if (response.ok) {

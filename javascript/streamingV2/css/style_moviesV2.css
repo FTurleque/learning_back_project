@@ -37,15 +37,19 @@ body img {
     width: 100%;
     display: grid;
     grid-template: repeat(28, 1fr) / repeat(56, 1fr);
-    background-color: #1f252869;
+    background-color: #1f25282d;
 }
 
 .title_container {
-    grid-area: 1 / 2 / 5 / 56;
+    grid-area: 1 / 12 / 5 / 46;
     display: flex;
     align-items: center;
     place-items: center;
     justify-content: space-around;
+}
+
+#form {
+    grid-area: 1 / 1 / 5 / 12;
 }
 
 .title {
@@ -55,9 +59,9 @@ body img {
 }
 
 .info_movie {
-    grid-area: 5 / 3 / 27 / 55;
+    grid-area: 5 / 3 / 28 / 55;
     display: grid;
-    grid-template: repeat(22, 1fr) / repeat(104, 1fr);
+    grid-template: repeat(23, 1fr) / repeat(104, 1fr);
 }
 
 .poster_container {
@@ -66,8 +70,8 @@ body img {
 }
 
 .poster {
-    background: no-repeat url("/javascript/streamingV2/img/007\ SPECTRE\ \(2015\).jpg");
-    background-size: contain;
+    /* background: no-repeat url("/javascript/streamingV2/img/007\ SPECTRE\ \(2015\).jpg");
+    background-size: contain; */
 }
 
 .carousel_actor_movie {
@@ -118,7 +122,7 @@ body img {
 
 
 .synopsis {
-    grid-area: 9 / 38 / 19 / 76;
+    grid-area: 9 / 38 / 20 / 76;
     background-color: #1f2528de;
     padding: 30px;
     display: flex;
@@ -128,18 +132,14 @@ body img {
 
 .synopsis p {
     
-    font-family: 'Fredericka the Great', cursive;
-    /* font-family: 'Salsa', cursive; */
-    /* font-family: 'Acme', sans-serif; */
-    /* font-family: 'Do Hyeon', sans-serif; */
-    /* font-family: 'Macondo Swash Caps', cursive; */
-    font-size: 1.6vw;
+    font-family: 'Acme', sans-serif;
+    font-size: 1.5vw;
     color: white;
     height: auto;
 }
 
 .typeOfMovie {
-    grid-area: 9 / 81 / 19 / -1;
+    grid-area: 9 / 81 / 20 / -1;
     background-color: #1f2528de;
     display: flex;
     align-items: center;
@@ -152,31 +152,31 @@ body img {
 
 }
 
-.descriptionList {
+.movie_description li {
     display: flex;
     flex-direction: row;
     justify-content: start;
 }
 
-.descriptionList a {
-    font-family: 'Oregano', cursive;
-    font-size: 1.6vw;
-    line-height: 1.7vw;
+.movie_description a {
+    font-family: 'Macondo Swash Caps', cursive;
+    font-size: 1.5vw;
+    line-height: 1.8vw;
     color: #fff;
-    /* margin-left: 5px; */
+    text-decoration: none;
 }
 
-.firstChildList {
-    font-family: 'Oregano', cursive;
+.movie_description strong {
+    font-family: 'Gemunu Libre', sans-serif;
     font-size: 1.6vw;
     line-height: 1.7vw;
     color: rgb(180, 63, 63);
-    margin-right: 5px;
+    margin-right: 15px;
     white-space: nowrap;
 }
 
 .nav_movie {
-    grid-area: 20 / 38 / 24 / -1;
+    grid-area: 21 / 38 / 24 / -1;
     display: grid;
     grid-template: repeat(2, 1fr) / repeat(17, 1fr);
 }
