@@ -6,3 +6,4 @@ const description = document.querySelector('.movie_description');
 const trailer = document.querySelector('.trailer');
 const notation = document.querySelector('.notation');
 const background = document.querySelector('.background');
+

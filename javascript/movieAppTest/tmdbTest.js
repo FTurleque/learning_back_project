@@ -86,10 +86,12 @@ const genres = [
   ]
 
 const main = document.getElementById('main');
+// Section de recherche
 const form =  document.getElementById('form');
 const search = document.getElementById('search');
+// Boutons de clasement par genre
 const tagsEl = document.getElementById('tags');
-
+// Bouton de navigation
 const prev = document.getElementById('prev')
 const next = document.getElementById('next')
 const current = document.getElementById('current')
@@ -179,7 +181,7 @@ function getMovies(url) {
             prevPage = currentPage - 1;
             totalPages = data.total_pages;
 
-            current.innerText = currentPage;
+            // current.innerText = currentPage;
 
             if(currentPage <= 1){
               prev.classList.add('disabled');

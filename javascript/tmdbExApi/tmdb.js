@@ -4,6 +4,8 @@ let baseURL = 'https://api.themoviedb.org/3/';
 let configData = null;
 let baseImageURL = null;
 
+
+
 let getConfig = function () {
     let url = "".concat(baseURL,'configuration?api_key=', apiTmdbKey);
     fetch(url)
@@ -11,8 +13,8 @@ let getConfig = function () {
         return result.json();
     })
     .then((data) => {
-        baseImageURL = data.images.secure_base_url;
-        configData = data.images;
+        // baseImageURL = data.images.secure_base_url;
+        // configData = data.images;
         console.log('config', data);
         console.log('config fetched');
         runSearch('Jaws')
@@ -33,5 +35,7 @@ let runSearch = function (keyword) {
         // work with result array
     })
 }
+
+runSearch('Jaws')
 
 document.addEventListener('DOMContentLoaded', getConfig); 
