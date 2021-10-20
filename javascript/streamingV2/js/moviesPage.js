@@ -6,6 +6,11 @@ const posterContainer = document.querySelector('.poster_container');
 const form = document.getElementById('form');
 const search = document.getElementById('search');
 const originalTitle = document.querySelector('.original_title');
+const typeOfMovie = document.querySelector('.genres');
+const originMovie = document.querySelector('.country');
+const directingMovie = document.querySelector('.director');
+const writingMovie = document.querySelector('.screenplay');
+const vote = document.querySelector('.vote');
 // const directing = document.querySelector('.directing');
 
 // Création élément HTML
@@ -14,6 +19,11 @@ const pElement = document.createElement('p');
 const backgroundImageMovie = document.createElement('img');
 const posterElement = document.createElement('div');
 const titleOriginalElement = document.createElement('a');
+const typeOfMovieElement = document.createElement('a');
+const countryElement = document.createElement('a');
+const directingElement = document.createElement('a');
+const writingElement = document.createElement('a');
+const voteElement = document.createElement('a');
 
 
 const API_KEY = '5ebb1b942f94f22ec3952d2c39768486';
@@ -43,7 +53,6 @@ const getSearchMovies = async function(_keyword) {
     }
 }
 
-// let index = 0;
 let idMovie;
 
 // Je test pour avoir un e correspondance entre l'entrée utilisateur et les titres recuperé de notre recherche
@@ -51,18 +60,19 @@ function checkTitle(_data) {
     // console.log(_data);
     let dataMovie = new Array;
     dataMovie = _data.results;
+    let i = 0;
+    let titleCheck;
 
-    for (let i = 0; i < dataMovie.length; i++) {
-        let titleCheck = dataMovie[i].title;
-        if (titleCheck !== keyword) {
-            console.log('Lose')
-        } else {
+    do {
+        titleCheck = dataMovie[i].title;
+        if (titleCheck === keyword) {
             // J'extrai l'id du film pour effectuer une recherche plus précise
             idMovie = dataMovie[i].id;
             getMovieById(idMovie);
         }
         i++
-    }
+    } while (titleCheck !== keyword);
+
     // _data.results.forEach(movie => {
     //     let titleCheck = _data.results[index].title;
     //     if (titleCheck !== keyword) {
@@ -94,8 +104,6 @@ const getMovieById = async function(_id) {
     }
 }
 
-let genresMovie = new Array;
-
 function showMovie(_data) {
     console.log(_data);
     let titleMovie = _data.title;
@@ -104,7 +112,31 @@ function showMovie(_data) {
     let backgroundMovie = _data.backdrop_path;
     // let dateMovie = _data.release_date;
     let titleOriginal = _data.original_title;
+    // let taglineTitle = _data.tagline;
+    // let studioMovie = _data.production_compagnies;
+    let voteMovie = _data.vote_average;
+    
+    let genresMovieData = _data.genres;
+    let genresMovie = '',
+        i = 0;
 
+    genresMovieData.forEach(genres => {
+        // Enlever la dernière virgule
+        let genre = genresMovieData[i].name + ', ';
+        genresMovie = genresMovie + genre;
+        i++
+    });
+
+    let countriesMovieData = _data.production_countries;
+    let countriesMovie = '',
+        index = 0;
+    countriesMovieData.forEach(countries => {
+        let country = countriesMovieData[index].iso_3166_1 + ', ';
+        countriesMovie = countriesMovie + country;
+        index++;
+    });
+
+    // Intégrer l'année
     titleElement.classList.add('title');
     titleElement.textContent = `${titleMovie}`;
     pElement.textContent = `${synopsisMovie}`;
@@ -114,12 +146,23 @@ function showMovie(_data) {
     posterElement.style.backgroundImage = `url(${IMG_URL + posterMovie})`;
     posterElement.style.backgroundRepeat = 'no-repeat';
     posterElement.style.backgroundSize = 'contain';
+    titleOriginalElement.href = '#';
     titleOriginalElement.textContent = `${titleOriginal}`;
+    typeOfMovieElement.href = '#';
+    typeOfMovieElement.textContent = `${genresMovie}`;
+    countryElement.href = '#';
+    countryElement.textContent = `${countriesMovie}`;
+    voteElement.href = '#';
+    voteElement.textContent = `${voteMovie}`;
 
     header.appendChild(titleElement);
     synopsis.appendChild(pElement);
     body.appendChild(backgroundImageMovie);
     posterContainer.appendChild(posterElement);
+    originalTitle.appendChild(titleOriginalElement);
+    typeOfMovie.appendChild(typeOfMovieElement);
+    originMovie.appendChild(countryElement);
+    vote.appendChild(voteElement);
 
     getCreditsMovie(idMovie)
 }
@@ -130,7 +173,7 @@ const getCreditsMovie = async function(_id) {
         let response = await fetch(url);
         if (response.ok) {
             let data = await response.json();
-            console.log(data);
+            // console.log(data);
             showMovieCredits(data);
             // carousel actor
         } else {
@@ -142,7 +185,32 @@ const getCreditsMovie = async function(_id) {
     }
 }
 
+function showMovieCredits(_data) {
+    let crewMovieData = _data.crew;
+    // console.log(crewMovieData);
+    let directorMovie = '',
+        screenplayMovie = '',
+        indexCrew = 0;
 
+    crewMovieData.forEach(cast => {
+        if (crewMovieData[indexCrew].job === 'Director') {
+            let director = crewMovieData[indexCrew].name;
+            directorMovie = directorMovie + director;
+        } else if (crewMovieData[indexCrew].job === 'Screenplay') {
+            let screenplay = crewMovieData[indexCrew].name + ', ';
+            screenplayMovie = screenplayMovie + screenplay;
+        }
+        indexCrew++;
+    });
+
+    directingElement.href = '#';
+    directingElement.textContent = `${directorMovie}`;
+    writingElement.href = '#';
+    writingElement.textContent = `${screenplayMovie}`;
+
+    directingMovie.appendChild(directingElement);
+    writingMovie.appendChild(writingElement);
+}
 
 // Je recupère le titre recherché dans le formulaire pour le traiter
 form.addEventListener('submit', (e) => {
