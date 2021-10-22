@@ -71,32 +71,75 @@ body img {
 }
 
 .poster {
-
+    /* On va afficher la jaquette via JavaScript*/
 }
 
-#carousel_actor_movie {
+#carrousel_actor_movie {
     grid-area: 1 / 38 / 8 / -1;
     display: grid;
     grid-template: repeat(7, 1fr) / repeat(67, 1fr);
 }
 
-.carousel_actors {
+
+.carrousel_actors {
     grid-area: 1 / 1 / 68 / -1;
     display: grid;
     grid-template: repeat(7, 1fr) / repeat(67, 1fr);
+    position: relative;
 }
 
-.carousel__container {
+.carrousel__container {
     grid-area: 1 / 1 / 68 / -1;
     display: flex;
     justify-content: space-between;
+    transition-duration: 0.3s;
+}
+
+.carrousel__item {
+
+}
+
+.img__name {
+    max-height: 100%;
+    position: relative;
+    bottom: 15%;
+    text-align: center;
+    color: black;
 }
 
 .img_actor {
-    max-width: 100%;
     max-height: 100%;
+}
+
+.carrousel__next, .carrousel__prev {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #FFF url('/javascript/streamingV2/img/svg/right.svg') center center no-repeat;
+    background-size: 20px 20px;
+    border-radius: 50%;
+    top: 50%;
+    margin-top: -20px;
+    right: -20px;
+    box-shadow: 0 15px 35px #3232321a, 0 5px 15px #0000001a;
     cursor: pointer;
-    transition: 200ms;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.carrousel__next:hover, .carrousel__prev:hover {
+    transform: scale(1.2);
+}
+
+.carrousel__next {
+    right: auto;
+    left: -20px;
+    background: #FFF url('/javascript/streamingV2/img/svg/left.svg') center center no-repeat;
+    background-size: 20px 20px;
+
+}
+
+.carrousel__next--hidden, .carrousel__prev--hidden, .img--hidden {
+    display: none;
 }
 
 .img_actor, .synopsis, .typeOfMovie, .btn {

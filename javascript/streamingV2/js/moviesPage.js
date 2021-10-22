@@ -11,6 +11,7 @@ const originMovie = document.querySelector('.country');
 const directingMovie = document.querySelector('.director');
 const writingMovie = document.querySelector('.screenplay');
 const vote = document.querySelector('.vote');
+const actorsMovie = document.querySelector('#carrousel_actor_movie');
 // const directing = document.querySelector('.directing');
 
 // Création élément HTML
@@ -73,17 +74,6 @@ function checkTitle(_data) {
         i++
     } while (titleCheck !== keyword);
 
-    // _data.results.forEach(movie => {
-    //     let titleCheck = _data.results[index].title;
-    //     if (titleCheck !== keyword) {
-    //         console.log(titleCheck);
-    //     } else {
-    //         let movieData = _data.results[index];
-    //         return showMovie(movieData);
-    //     }
-    //     index++;
-    // });
-
 }
 
 //recherche du film par son id tmdb
@@ -105,7 +95,7 @@ const getMovieById = async function(_id) {
 }
 
 function showMovie(_data) {
-    console.log(_data);
+    // console.log(_data);
     let titleMovie = _data.title;
     let synopsisMovie = _data.overview;
     let posterMovie = _data.poster_path;
@@ -173,9 +163,8 @@ const getCreditsMovie = async function(_id) {
         let response = await fetch(url);
         if (response.ok) {
             let data = await response.json();
-            // console.log(data);
+            console.log(data);
             showMovieCredits(data);
-            // carousel actor
         } else {
             console.error('Retour du serveur : ', response.status);
         }
@@ -187,10 +176,13 @@ const getCreditsMovie = async function(_id) {
 
 function showMovieCredits(_data) {
     let crewMovieData = _data.crew;
-    // console.log(crewMovieData);
+    let castMovieData = _data.cast;
+    console.log(castMovieData);
+    console.log(crewMovieData);
     let directorMovie = '',
         screenplayMovie = '',
-        indexCrew = 0;
+        indexCrew = 0,
+        indexCast = 0;
 
     crewMovieData.forEach(cast => {
         if (crewMovieData[indexCrew].job === 'Director') {
@@ -201,6 +193,15 @@ function showMovieCredits(_data) {
             screenplayMovie = screenplayMovie + screenplay;
         }
         indexCrew++;
+    });
+
+    castMovieData.forEach(actor => {
+        let actorPicture = document.createElement('img');
+        actorPicture.src = IMG_URL + castMovieData[indexCast].profile_path;
+        actorPicture.alt = castMovieData[indexCast].name;
+        actorPicture.classList.add('img_actor');
+        actorsMovie.appendChild(actorPicture);
+        indexCast++;
     });
 
     directingElement.href = '#';
