@@ -13,7 +13,7 @@ fileSelector.addEventListener('change', (event) => {
     const fileList = event.target.files;
     console.log(fileList);
     console.log(fileList[0].name)
-    // placeElement(fileList);
+    placeElement(fileList);
 
 
 });
@@ -21,6 +21,7 @@ fileSelector.addEventListener('change', (event) => {
 function placeElement(_fileList) {
     for (const property in _fileList) {
         console.log(`${property}: ${_fileList[property]}`);
+        debugger
         if (_fileList.hasOwnProperty(property)) {
             namefile = _fileList[property].name;
             taille = _fileList[property].size;
