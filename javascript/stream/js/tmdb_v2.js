@@ -265,9 +265,7 @@ const getMovieToDiscover = async function (_url) {
             if (response.ok) {
                 let tmp = await response.json();
                 tmp.results.forEach(result => {
-                    let moviesId = result.id;
-
-                    getGenresMovies(result);
+                    getMovieById(580489);
                 });
                 page++;
 
@@ -277,26 +275,6 @@ const getMovieToDiscover = async function (_url) {
         } catch (error) {
             console.log(error);
         }
-    }
-}
-
-// Je récupère les info d'un film par son id
-const getMovieById = async function (_id) {
-    let url = BASE_URL + '/movie/' + _id + '?' + api_key;
-    try {
-        let response = await fetch(url);
-        if (response.ok) {
-            let data = await response.json();
-            console.log(data)
-            debugger
-            // getGenresMovies(data);
-            // const backdropMovie = getMovieBackdrops(_id);
-            // console.log(backdropMovie)
-        } else {
-            console.error('Retour du serveur : ', response.status);
-        }
-    } catch (error) {
-        console.log(error);
     }
 }
 
@@ -316,7 +294,7 @@ const getGenresMovies = function(_data) {
                         genreName = `${genres[indexGenres].name}`;
                     }
                 }
-                getMovieById(idMovie);
+                getMovieById(_data);
                 // html__element__img(genreName, srcImg, _data);
                 debugger
                 break;
@@ -504,6 +482,27 @@ const getGenresMovies = function(_data) {
             default:
                 break;
         }
+    }
+}
+
+// Je récupère les info d'un film par son id
+const getMovieById = async function (_id) {
+    let url = BASE_URL + '/movie/' + _id + '?' + api_key;
+    debugger
+    try {
+        let response = await fetch(url);
+        if (response.ok) {
+            let data = await response.json();
+            console.log(data)
+            debugger
+            // getGenresMovies(data);
+            // const backdropMovie = getMovieBackdrops(_id);
+            // console.log(backdropMovie)
+        } else {
+            console.error('Retour du serveur : ', response.status);
+        }
+    } catch (error) {
+        console.log(error);
     }
 }
 
