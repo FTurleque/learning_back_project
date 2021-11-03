@@ -1,3 +1,11 @@
+import {
+    createDivWithClass, 
+    createAWithClass, 
+    createH1WithClassAndTxt, 
+    createImgWithClassAndUrlAndTitle,
+    createPWithClassAndContent
+} from './constructor_html.js'
+
 // Manipulation HTML via DOM
 const header = document.querySelector('.title_container');
 const synopsis = document.querySelector('.synopsis');
@@ -12,92 +20,74 @@ const directingMovie = document.querySelector('.director');
 const writingMovie = document.querySelector('.screenplay');
 const vote = document.querySelector('.vote');
 const actorsMovie = document.querySelector('#carrousel_actor_movie');
-// const directing = document.querySelector('.directing');
-
-// Création élément HTML
-const titleElement = document.createElement('h1');
-const pElement = document.createElement('p');
-const backgroundImageMovie = document.createElement('img');
-const posterElement = document.createElement('div');
-const titleOriginalElement = document.createElement('a');
-const typeOfMovieElement = document.createElement('a');
-const countryElement = document.createElement('a');
-const directingElement = document.createElement('a');
-const writingElement = document.createElement('a');
-const voteElement = document.createElement('a');
 
 
-const API_KEY = '5ebb1b942f94f22ec3952d2c39768486';
-const BASE_URL = 'https://api.themoviedb.org/3';
-const backgroundIMG_URL = 'https://image.tmdb.org/t/p/original';
-const IMG_URL = 'https://image.tmdb.org/t/p/w500';
-const searchURL = BASE_URL + '/search/movie?api_key=' + API_KEY;
-const french = '&language=fr-FR';
-
-let keyword;
+// let keyword;
+// let movie_id;
+// Je récupère les info d'un film par son id
 
 // Je recherche les films portant le terme cherché soit plusieurs resultats
-const getSearchMovies = async function(_keyword) {
-    keyword = _keyword;
-    let url = searchURL + '&query=' + _keyword + french;
-    try {
-        let response = await fetch(url);
-        if (response.ok) {
-            let data = await response.json();
-            // console.log(data);
-            checkTitle(data);
-        } else {
-            console.error('Retour du serveur : ', response.status);
-        }
-    } catch (error) {
-        console.log(error);
-    }
-}
+// const getSearchMovies = async function(_keyword) {
+//     keyword = _keyword;
+//     let url = searchURL + '&query=' + _keyword + french;
+//     try {
+//         let response = await fetch(url);
+//         if (response.ok) {
+//             let data = await response.json();
+//             // console.log(data);
+//             checkTitle(data);
+//         } else {
+//             console.error('Retour du serveur : ', response.status);
+//         }
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
-let idMovie;
+// let idMovie;
 
 // Je test pour avoir un e correspondance entre l'entrée utilisateur et les titres recuperé de notre recherche
-function checkTitle(_data) {
-    // console.log(_data);
-    let dataMovie = new Array;
-    dataMovie = _data.results;
-    let i = 0,
-        titleOriginalMovie = '',
-        titleMovie = '',
-        find = false;
+// function checkTitle(_data) {
+//     // console.log(_data);
+//     let dataMovie = new Array;
+//     dataMovie = _data.results;
+//     let i = 0,
+//         titleOriginalMovie = '',
+//         titleMovie = '',
+//         find = false;
 
-    // Verification sans majuscules et sans charactère spéciaux A FAIRE
-    do {
-        titleOriginalMovie = dataMovie[i].original_title;
-        titleMovie = dataMovie[i].title;
-        if (titleOriginalMovie === keyword || titleMovie === keyword) {
-            // J'extrai l'id du film pour effectuer une recherche plus précise
-            idMovie = dataMovie[i].id;
-            getMovieById(idMovie);
-            find = true;
-        }
-        i++
-    } while (find === false);
+//     // Verification sans majuscules et sans charactère spéciaux A FAIRE
+//     do {
+//         titleOriginalMovie = dataMovie[i].original_title;
+//         titleMovie = dataMovie[i].title;
+//         if (titleOriginalMovie === keyword || titleMovie === keyword) {
+//             // J'extrai l'id du film pour effectuer une recherche plus précise
+//             idMovie = dataMovie[i].id;
+//             getMovieById(idMovie);
+//             find = true;
+//         }
+//         i++
+//     } while (find === false);
 
-}
+// }
 
 // recherche du film par son id tmdb
-const getMovieById = async function(_id) {
-    let url = BASE_URL + '/movie/' + _id + '?api_key=' + API_KEY + french;
-    try {
-        let response = await fetch(url);
-        if (response.ok) {
-            let data = await response.json();
-            // console.log(data);
-            showMovie(data);
-        } else {
-            console.error('Retour du serveur : ', response.status);
-        }
+// const getMovieById = async function(_id) {
+//     let url = BASE_URL + '/movie/' + _id + '?api_key=' + API_KEY + french;
+//     try {
+//         let response = await fetch(url);
+//         if (response.ok) {
+//             let data = await response.json();
+//             // console.log(data);
+//             showMovie(data);
+//         } else {
+//             console.error('Retour du serveur : ', response.status);
+//         }
 
-    } catch (error) {
-        console.log(error);
-    }
-}
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
 // Affichage des infos sur le film dans la page
 function showMovie(_data) {
@@ -140,22 +130,20 @@ function showMovie(_data) {
     });
 
     // Intégrer l'année
-    titleElement.classList.add('title');
-    titleElement.textContent = `${titleMovie}`;
-    pElement.textContent = `${synopsisMovie}`;
-    backgroundImageMovie.src = `${backgroundIMG_URL + backgroundMovie}`;
-    backgroundImageMovie.classList.add('background');
-    posterElement.className = 'poster';
+    const titleElement = createH1WithClassAndTxt('title', `${titleMovie}`)
+    const pElement = createPWithClassAndContent(`${titleMovie}`, `${synopsisMovie}`);
+    const backgroundImageMovie = createImgWithClassAndUrlAndTitle('background', `${backgroundIMG_URL + backgroundMovie}`, 'title')
+    const posterElement = createAWithClass('poster', '#')
     posterElement.style.backgroundImage = `url(${IMG_URL + posterMovie})`;
     posterElement.style.backgroundRepeat = 'no-repeat';
     posterElement.style.backgroundSize = 'contain';
-    titleOriginalElement.href = '#';
+    const titleOriginalElement = createAWithClass('original_title', '#');
     titleOriginalElement.textContent = `${titleOriginal}`;
-    typeOfMovieElement.href = '#';
+    const typeOfMovieElement = createAWithClass('movie_genres', '#');
     typeOfMovieElement.textContent = `${genresMovie}`;
-    countryElement.href = '#';
+    const countryElement = createAWithClass('country', '#');
     countryElement.textContent = `${countriesMovie}`;
-    voteElement.href = '#';
+    const voteElement = createAWithClass('movie_vote', '#');
     voteElement.textContent = `${voteMovie} / 10`;
 
     header.appendChild(titleElement);
@@ -166,31 +154,29 @@ function showMovie(_data) {
     typeOfMovie.appendChild(typeOfMovieElement);
     originMovie.appendChild(countryElement);
     vote.appendChild(voteElement);
-
-    getCreditsMovie(idMovie)
 }
 
 // Recherche des infos sur l'équipe du film
-const getCreditsMovie = async function(_id) {
-    let url = BASE_URL + '/movie/' + _id + '/credits?api_key=' + API_KEY + french;
-    try {
-        let response = await fetch(url);
-        if (response.ok) {
-            let data = await response.json();
-            console.log(data);
-            showMovieCredits(data);
-        } else {
-            console.error('Retour du serveur : ', response.status);
-        }
-    } catch (error) {
-        console.log(error);
-    }
-    new Carrousel(document.querySelector('#carrousel_actor_movie'), {
-        slidesToScroll: 1,
-        slidesVisible: 5,
-        loop: false
-    })
-}
+// const getCreditsMovie = async function(_id) {
+//     let url = BASE_URL + '/movie/' + _id + '/credits?api_key=' + API_KEY + french;
+//     try {
+//         let response = await fetch(url);
+//         if (response.ok) {
+//             let data = await response.json();
+//             console.log(data);
+//             showMovieCredits(data);
+//         } else {
+//             console.error('Retour du serveur : ', response.status);
+//         }
+//     } catch (error) {
+//         console.log(error);
+//     }
+//     new Carrousel(document.querySelector('#carrousel_actor_movie'), {
+//         slidesToScroll: 1,
+//         slidesVisible: 5,
+//         loop: false
+//     })
+// }
 
 // Affichage des infos sur l'équipe du film
 function showMovieCredits(_data) {
@@ -244,9 +230,9 @@ function showMovieCredits(_data) {
         indexCast++;
     });
 
-    directingElement.href = '#';
+    const directingElement = createAWithClass('movie_director', '#');
     directingElement.textContent = `${directorMovie}`;
-    writingElement.href = '#';
+    const writingElement = createAWithClass('movie_writing', '#');
     writingElement.textContent = `${screenplayMovie}`;
 
     directingMovie.appendChild(directingElement);
@@ -254,18 +240,17 @@ function showMovieCredits(_data) {
 }
 
 // Je recupère le titre recherché dans le formulaire pour le traiter
-form.addEventListener('submit', (e) => {
-    // document.getElementById("form").reset();
-    e.preventDefault();
-    debugger
-    const searchTerm = search.value;
-    if(searchTerm) {
-        getSearchMovies(searchTerm)
-    }else{
-        console.error('Error')
-    }
+// form.addEventListener('submit', (e) => {
+//     // document.getElementById("form").reset();
+//     e.preventDefault();
+//     const searchTerm = search.value;
+//     if(searchTerm) {
+//         getSearchMovies(searchTerm)
+//     }else{
+//         console.error('Error')
+//     }
 
-})
+// })
 
 class Carrousel {
     /**
@@ -409,3 +394,7 @@ class Carrousel {
     }
 }
 
+export {
+    showMovie,
+    showMovieCredits
+}

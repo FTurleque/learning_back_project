@@ -1,43 +1,17 @@
 import {
-    createDivWithClass, 
-    createAWithClass, 
-    createH1WithClass, 
-    createImgWithClass} from './constructor_html.js'
-import {
-    sliderNewsMovies,
-    swiper__action,
-    swiper__animation,
-    swiper__adventure,
-    swiper__comedy,
-    swiper__crime,
-    swiper__documentary,
-    swiper__drama,
-    swiper__family,
-    swiper__fantasy,
-    swiper__history,
-    swiper__horror,
-    swiper__music,
-    swiper__mystery,
-    swiper__romance,
-    swiper__science_fiction,
-    swiper__tv_movie,
-    swiper__thriller,
-    swiper__war,
-    swiper__western
-} from './app.js'
-import Swiper from 'https://unpkg.com/swiper@7/swiper-bundle.esm.browser.min.js'
-
-// Constructor du Swiper
-const swiper = new Swiper(HTMLElement, {});
+    html__element__img
+} from './constructor_html.js'
 
 // API Tmdb
 const api_key = 'api_key=5ebb1b942f94f22ec3952d2c39768486';
 const BASE_URL = 'https://api.themoviedb.org/3';
-const IMG_URL = 'https://image.tmdb.org/t/p/w500';
-const img_backdrops = 'https://image.tmdb.org/t/p/original';
-const french = '&language=fr-FR';
+const backgroundIMG_URL = 'https://image.tmdb.org/t/p/original';
 const url_discover = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + api_key;
+const french = '&language=fr-FR';
 const nextPage = '&page=';
+const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+const searchURL = BASE_URL + '/search/movie?api_key=' + api_key;
+
 const genres = [
     { "id": 28, "name": "action" },
     { "id": 12, "name": "adventure" },
@@ -61,7 +35,10 @@ const genres = [
 ]
 
 let idMoviesDiscover = [];
-// Je récupère une liste de tous films a découvrir depuis TMDB et j'en extrait l'ID
+/**
+ * Je récupère une liste de tous films a découvrir depuis TMDB et j'en extrait l'ID
+ * @param {number} indexMax Nombre de page(s) à récupéré
+ */
 async function getMovieToDiscover(indexMax) {
     let page = 1;
     while (page < (indexMax + 1)) {
@@ -73,7 +50,6 @@ async function getMovieToDiscover(indexMax) {
                 tmp.results.forEach(result => {
                     let result_id = result.id;
                     idMoviesDiscover.push(result_id);
-                    
                 });
             } else {
                 console.error('Retour du serveur : ', response.status);
@@ -86,11 +62,14 @@ async function getMovieToDiscover(indexMax) {
 }
 
 let dataMoviesFR = [];
-// Je récupère les info d'un film par son id
+/**
+ * Je récupère les info d'un film par son id
+ * @param {number} movies_id Identifiant du film
+ */
 const getMovieById = async function (movies_id) {
     for (let i = 0; i < movies_id.length; i++) {
         let movie_id  = movies_id[i];
-        let url = `https://api.themoviedb.org/3/movie/${movie_id}?${api_key}&language=en-US`;
+        let url = `https://api.themoviedb.org/3/movie/${movie_id}?${api_key}${french}`;
         try {
             let response = await fetch(url);
             if (response.ok) {
@@ -106,7 +85,10 @@ const getMovieById = async function (movies_id) {
 }
 
 let data_moviesWithUrl = [];
-// Je récupère les images backdrops d'un film par son id
+/**
+ * Je récupère les images backdrops d'un film par son id
+ * @param {number} movies_id Identifiant du film
+ */
 const getMovieBackdrops = async function(movies_id) {
     for (let indexMovie = 0; indexMovie < movies_id.length; indexMovie++) {
         let movie_id  = movies_id[indexMovie];
@@ -133,7 +115,7 @@ const getMovieBackdrops = async function(movies_id) {
             
                 if (backdropsFR.length > 0) {
                     let url__end = backdropsFR[0].file_path;
-                    srcImg = img_backdrops + url__end;
+                    srcImg = backgroundIMG_URL + url__end;
                     let src_img = {
                         src_Language: 'fr',
                         src_img: srcImg
@@ -142,7 +124,7 @@ const getMovieBackdrops = async function(movies_id) {
                     data_moviesWithUrl.push(object_moviesWithUrl)
                 } else if (backdropsEN.length > 0) {
                     let url__end = backdropsEN[0].file_path;
-                    srcImg = img_backdrops + url__end;
+                    srcImg = backgroundIMG_URL + url__end;
                     let src_img = {
                         src_Language: 'en',
                         src_img: srcImg
@@ -151,16 +133,14 @@ const getMovieBackdrops = async function(movies_id) {
                     data_moviesWithUrl.push(object_moviesWithUrl)
                 } else if (backdrops_noName > 0) {
                     let url__end = backdropsEN[0].file_path;
-                    srcImg = img_backdrops + url__end;
+                    srcImg = backgroundIMG_URL + url__end;
                     let src_img = {
                         src_Language: 'none',
                         src_img: srcImg
                     }
                     let object_moviesWithUrl = Object.assign(dataMoviesFR[indexMovie], src_img);
                     data_moviesWithUrl.push(object_moviesWithUrl)
-                } else {
-                    console.log('Pas de Backdrops');
-                }
+                } 
 
             } else {
                 console.error('Retour du serveur : ', response.status);
@@ -169,12 +149,12 @@ const getMovieBackdrops = async function(movies_id) {
             console.log(error);
         }
     }
-    console.log(data_moviesWithUrl);
 }
 
-
-// Je partage les films selon le genre dans les sliders
-
+/**
+ * Je partage les films selon le genre dans les sliders
+ * @param {data} _data Données du film
+ */
 const getGenresMovies = function(_data) {
     let genreName = '',
     genresMovie = [];
@@ -345,290 +325,18 @@ const getGenresMovies = function(_data) {
 
 }
 
-
-function html__element__img(_data, _class) {
-    let swiperSlide = createDivWithClass('swiper-slide');
-    let aMovie = createAWithClass('item__container');
-    aMovie.href = 'movies_presentation.html';
-    let imgMovie = createImgWithClass('picture');
-    imgMovie.src = _data.src_img;
-    imgMovie.alt = _data.title;
-    aMovie.appendChild(imgMovie);
-    swiperSlide.appendChild(aMovie)
-    document.querySelector('.' + _class).appendChild(swiperSlide);
-}
-
-function swiper_creation() {
-    // News
-    const wsMovies = new Swiper(sliderNewsMovies, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-
-    // Films slider Action
-    const action = new Swiper(swiper__action, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Animation
-    const animation = new Swiper(swiper__animation, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Aventure
-    const adventure = new Swiper(swiper__adventure, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Comédie
-    const comedy = new Swiper(swiper__comedy, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Crime
-    const crime = new Swiper(swiper__crime, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Documentaire
-    const documentary = new Swiper(swiper__documentary, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Drame
-    const drama = new Swiper(swiper__drama, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Famille
-    const family = new Swiper(swiper__family, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Fantastique
-    const fantasy = new Swiper(swiper__fantasy, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Historique
-    const history = new Swiper(swiper__history, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Horreur
-    const horror = new Swiper(swiper__horror, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Musique
-    const music = new Swiper(swiper__music, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Mystère
-    const mystery = new Swiper(swiper__mystery, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Romance
-    const romance = new Swiper(swiper__romance, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films science Fiction
-    const science_fiction = new Swiper(swiper__science_fiction, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Téléfilm
-    const tv_movie = new Swiper(swiper__tv_movie, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Thriller
-    const thriller = new Swiper(swiper__thriller, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Guerre
-    const war = new Swiper(swiper__war, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-    // Films slider Western
-    const western = new Swiper(swiper__western, {
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        spaceBetween: 5,
-        slidesPerView: 5,
-        // loop: true,
-        // freeMode: true,
-        // speed: 500,
-    });
-
-}
-
+let video_movie = [];
+/**
+ * Je récupère les vidéo si elles éxistes
+ * @param {number} _id Identifiant du film
+ */
 const getVideoMovieById = async function (_id) {
     let url = BASE_URL + '/movie/' + _id + '/videos?' + api_key + french;
     try {
         let response = await fetch(url);
         if (response.ok) {
             let data = await response.json();
-            console.log(data)
+            video_movie.push(data)
         } else {
             console.error('Retour du serveur : ', response.status);
         }
@@ -638,14 +346,54 @@ const getVideoMovieById = async function (_id) {
 
 }
 
-// getMovieToDiscover(url_WithPage);
+// Je recherche les films portant le terme cherché soit plusieurs resultats
+const getSearchMovies = async function(_keyword) {
+    keyword = _keyword;
+    let url = searchURL + '&query=' + _keyword + french;
+    try {
+        let response = await fetch(url);
+        if (response.ok) {
+            let data = await response.json();
+            // console.log(data);
+            checkTitle(data);
+        } else {
+            console.error('Retour du serveur : ', response.status);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+let credits_movie = [];
+/**
+ * Recherche des infos sur l'équipe du film
+ * @param {number} _id Identifiant du film
+ */
+const getCreditsMovie = async function(_id) {
+    let url = BASE_URL + '/movie/' + _id + '/credits?api_key=' + api_key + french;
+    try {
+        let response = await fetch(url);
+        if (response.ok) {
+            let data = await response.json();
+            credits_movie.push(data);
+        } else {
+            console.error('Retour du serveur : ', response.status);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 export {
-    idMoviesDiscover, 
-    data_moviesWithUrl, 
+    idMoviesDiscover,
     dataMoviesFR,
-    swiper_creation,
+    video_movie,
+    credits_movie,
+    data_moviesWithUrl, 
     getGenresMovies, 
     getMovieToDiscover, 
     getMovieById, 
-    getMovieBackdrops}
+    getMovieBackdrops,
+    getVideoMovieById,
+    getCreditsMovie
+}

@@ -119,7 +119,7 @@ body img {
     position: absolute;
     width: 40px;
     height: 40px;
-    background: #FFF url('right.svg') center center no-repeat;
+    background: #FFF url('/javascript/findMovieInfo/css/right.svg') center center no-repeat;
     background-size: 20px 20px;
     border-radius: 50%;
     top: 50%;
@@ -137,7 +137,7 @@ body img {
 .carrousel__next {
     right: auto;
     left: -20px;
-    background: #FFF url('left.svg') center center no-repeat;
+    background: #FFF url('/javascript/findMovieInfo/css/left.svg') center center no-repeat;
     background-size: 20px 20px;
 
 }
