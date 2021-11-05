@@ -1,25 +1,25 @@
 import {
     idMoviesDiscover,
-    dataMoviesFR,
-    video_movie,
-    credits_movie,
-    data_moviesWithUrl, 
+    newDataMovie,
+    data_moviesWithUrl,
+    data_credits_movie,
     getGenresMovies, 
     getMovieToDiscover, 
-    getMovieById, 
+    getMoviesById, 
     getMovieBackdrops,
     getVideoMovieById,
-    getCreditsMovie
+    getCreditsMovie,
+    getMovieById
 
 } from './tmdb_v3.js'
 import {
     swiper_creation, 
     swiper__constructor__withBase
 } from './swiper_elements.js'
-// import {
-//     showMovie,
-//     showMovieCredits
-// } from './moviesPage_v2.js'
+import {
+    showMovie,
+    showMovieCredits
+} from './moviesPage_v2.js'
 
 
 if (document.body.id === 'body__discover__movies') {
@@ -36,7 +36,7 @@ if (document.body.id === 'body__discover__movies') {
     /**
      * @param {Array} idMoviesDiscover Liste des ids de films à découvrir
      */
-    await getMovieById(idMoviesDiscover);
+    await getMoviesById(idMoviesDiscover);
 
     /**
      * @param {Array} idMoviesDiscover Liste des ids de films à découvrir
@@ -55,24 +55,29 @@ if (document.body.id === 'body__discover__movies') {
 
     
 } else if (document.body.id === 'body__movie__info') {
-    // const id__to__view = elementId;
+    const new__movieID = sessionStorage.getItem('id');
     debugger
-    await getMovieById(id__to__view);
-    showMovie(dataMoviesFR);
-    await getCreditsMovie(id__to__view);
-    showMovieCredits(credits_movie);
+    await getMovieById(new__movieID);
+    showMovie(newDataMovie);
+    await getCreditsMovie(new__movieID);
+    showMovieCredits(data_credits_movie);
 }
 
-// let a__movies = document.querySelectorAll('a');
-// for (let i = 0; i < a__movies.length; i++) {
-//     let a__movie = a__movies[i];
-//     let getNewIdMovie = function() {
-//         debugger
-//         const id__to__view = this.id;
-//         debugger
-//     }
-//     a__movie.addEventListener('click', getNewIdMovie, true)
-// }
+// var id__to__view;
+let a__movies = document.querySelectorAll('a');
+for (let i = 0; i < a__movies.length; i++) {
+    let a__movie = a__movies[i];
+    const getNewIdMovie = async function() {
+        
+        let id__to__view = this.id;
+        sessionStorage.setItem('id', id__to__view);
+        debugger
+    }
+    a__movie.addEventListener('click', getNewIdMovie, false)
+}
+
+
+
 
 // document.addEventListener('click', function() {
 //     let id__to__check = document.getElementsByTagName('a')[0].getAttribute('id');
@@ -98,22 +103,19 @@ if (document.body.id === 'body__discover__movies') {
 
 // document.addEventListener('click', checkID, { signal: controller.signal })
 
-const elementId = {
-    id: ''
-};
 
-const capture = {
-    capture: true
-  };
+// const capture = {
+//     capture: true
+//   };
 
-const a_link = document.querySelectorAll('a');
+// const a_link = document.querySelectorAll('a');
 
-document.addEventListener('click', captureHandler, capture);
+// document.addEventListener('click', captureHandler, capture);
 
-function captureHandler(event) {
-    debugger
-    let id__element = event.path[1].attributes.id.value;
-    elementId.id = id__element;
-    // event.stopImmediatePropagation();
-    // console.log(elementId);
-}
+// function captureHandler(event) {
+//     debugger
+//     let id__element = event.path[1].attributes.id.value;
+    
+//     // event.stopImmediatePropagation();
+//     // console.log(elementId);
+// }

@@ -64,9 +64,9 @@ async function getMovieToDiscover(indexMax) {
 let dataMoviesFR = [];
 /**
  * Je récupère les info d'un film par son id
- * @param {number} movies_id Identifiant du film
+ * @param {Array} movies_id Identifiant du film
  */
-const getMovieById = async function (movies_id) {
+const getMoviesById = async function (movies_id) {
     for (let i = 0; i < movies_id.length; i++) {
         let movie_id  = movies_id[i];
         let url = `https://api.themoviedb.org/3/movie/${movie_id}?${api_key}${french}`;
@@ -83,6 +83,27 @@ const getMovieById = async function (movies_id) {
         }
     }
 }
+
+let newDataMovie;
+/**
+ * Je récupère les info d'un film par son id
+ * @param {number} movies_id Identifiant du film
+ */
+ const getMovieById = async function (movie_id) {
+    let url = `https://api.themoviedb.org/3/movie/${movie_id}?${api_key}${french}`;
+    try {
+        let response = await fetch(url);
+        if (response.ok) {
+            let dataMovie = await response.json();
+            newDataMovie = dataMovie;
+        } else {
+            console.error('Retour du serveur : ', response.status);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 let data_moviesWithUrl = [];
 /**
@@ -364,18 +385,18 @@ const getSearchMovies = async function(_keyword) {
     }
 }
 
-let credits_movie = [];
+let data_credits_movie = [];
 /**
  * Recherche des infos sur l'équipe du film
  * @param {number} _id Identifiant du film
  */
-const getCreditsMovie = async function(_id) {
-    let url = BASE_URL + '/movie/' + _id + '/credits?api_key=' + api_key + french;
+const getCreditsMovie = async function(_movie_id) {
+    let url = `https://api.themoviedb.org/3/movie/${_movie_id}/credits?${api_key}`;
     try {
         let response = await fetch(url);
         if (response.ok) {
             let data = await response.json();
-            credits_movie.push(data);
+            data_credits_movie.push(data);
         } else {
             console.error('Retour du serveur : ', response.status);
         }
@@ -385,15 +406,19 @@ const getCreditsMovie = async function(_id) {
 }
 
 export {
+    backgroundIMG_URL,
+    IMG_URL,
     idMoviesDiscover,
     dataMoviesFR,
     video_movie,
-    credits_movie,
-    data_moviesWithUrl, 
+    data_credits_movie,
+    data_moviesWithUrl,
+    newDataMovie,
     getGenresMovies, 
     getMovieToDiscover, 
-    getMovieById, 
+    getMoviesById, 
     getMovieBackdrops,
     getVideoMovieById,
-    getCreditsMovie
+    getCreditsMovie,
+    getMovieById
 }
