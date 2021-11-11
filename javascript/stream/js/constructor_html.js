@@ -37,6 +37,19 @@ let createH1WithClassAndTxt = function(className, h1Txt) {
 }
 
 /**
+ * Je construit un h1 avec une class
+ * @param {class} className 
+ * @param {Text} h1Txt Contenu du h1
+ * @returns {HTMLElement} h1
+ */
+ let createH2WithClassAndTxt = function(className, h1Txt) {
+    let h1 = document.createElement('h2');
+    h1.setAttribute('class', className);
+    h1.textContent = h1Txt;
+    return h1;
+}
+
+/**
  * Je construit une img avec une class
  * @param {class} className 
  * @param {URL} _url Lien de l'image avec un URL
@@ -80,7 +93,8 @@ let createPWithClassAndContent = function(_className, _content) {
 
 export {
     createDivWithClass, 
-    createH1WithClassAndTxt, 
+    createH1WithClassAndTxt,
+    createH2WithClassAndTxt,
     createImgWithClassAndUrlAndTitle,
     createPWithClassAndContent,
     createAWithClass,

@@ -1,0 +1,56 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #141414;
+    font-family: Helvetica, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: white;
+    padding: 5px 5px 0 5px;
+    display: flex;
+}
+
+.informations {
+    width: 25%;
+}
+
+.picture__actor {
+    display: flex;
+}
+
+.picture__actor img {
+    max-width: 100%;
+}
+
+.actor__works {
+    max-width: 75%;
+    display: inline;
+}
+
+.actor__name {
+    text-align: center;
+}
+
+/*Slider movies*/
+.caroussel__movies__actor {
+    /* height: 230px; */
+}
+
+.movies__actor {
+    /* max-height: 100%; */
+}
+
+.picture {
+    height: 300px;
+    width: auto;
+}
+
+.departement__pro li {
+    display: flex;
+    justify-content: space-between;
+}

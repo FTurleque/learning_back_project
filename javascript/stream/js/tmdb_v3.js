@@ -369,7 +369,7 @@ const getVideoMovieById = async function (_id) {
 
 // Je recherche les films portant le terme cherché soit plusieurs resultats
 const getSearchMovies = async function(_keyword) {
-    keyword = _keyword;
+    let keyword = _keyword;
     let url = searchURL + '&query=' + _keyword + french;
     try {
         let response = await fetch(url);
@@ -405,6 +405,84 @@ const getCreditsMovie = async function(_movie_id) {
     }
 }
 
+let actor_info;
+/**
+ * Je recherche les infos sur l'acteur
+ * @param {number} _person_id Identifiant de l'acteur
+ */
+const getActorDetails = async function(_person_id) {
+    let url = `https://api.themoviedb.org/3/person/${_person_id}?${api_key}&language=en-US`;
+    try {
+        let response = await fetch(url);
+        if (response.ok) {
+            let data = await response.json();
+            actor_info = data;
+        } else {
+            console.error('Retour du serveur : ', response.status);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+let actor_credits = [];
+/**
+ * Je recherche les crédits de l'acteur
+ * @param {number} _person_id Identifiant de l'acteur
+ */
+const getActorMovieCredits = async function(_person_id) {
+    let url = `https://api.themoviedb.org/3/person/${_person_id}/movie_credits?${api_key}&language=en-US`;
+    try {
+        let response = await fetch(url);
+        if (response.ok) {
+            let data = await response.json();
+            actor_credits.push(data);
+        } else {
+            console.error('Retour du serveur : ', response.status);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+/**
+ * Je recherche les crédits combinés de l'acteur
+ * @param {number} _person_id Identifiant de l'acteur
+ */
+const getActorCombinedCredits = async function(_person_id) {
+    let url = `https://api.themoviedb.org/3/person/${person_id}/combined_credits?${api_key}&language=en-US`;
+    try {
+        let response = await fetch(url);
+        if (response.ok) {
+            let data = await response.json();
+        } else {
+            console.error('Retour du serveur : ', response.status);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+let actor_portrait;
+/**
+ * Je recherche les images de l'acteur
+ * @param {number} _person_id Identifiant de l'acteur
+ */
+const getActorPictures = async function(_person_id) {
+    let url = `https://api.themoviedb.org/3/person/${_person_id}/images?${api_key}`;
+    try {
+        let response = await fetch(url);
+        if (response.ok) {
+            let data = await response.json();
+            actor_portrait = data.profiles;
+        } else {
+            console.error('Retour du serveur : ', response.status);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export {
     backgroundIMG_URL,
     IMG_URL,
@@ -414,11 +492,17 @@ export {
     data_credits_movie,
     data_moviesWithUrl,
     newDataMovie,
+    actor_info,
+    actor_credits,
+    actor_portrait,
     getGenresMovies, 
     getMovieToDiscover, 
     getMoviesById, 
     getMovieBackdrops,
     getVideoMovieById,
     getCreditsMovie,
-    getMovieById
+    getMovieById,
+    getActorDetails,
+    getActorMovieCredits,
+    getActorPictures
 }

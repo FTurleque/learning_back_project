@@ -9,6 +9,7 @@ import {
     backgroundIMG_URL,
     IMG_URL
 } from './tmdb_v3.js'
+import {Carrousel} from './Carrousel.js'
 
 // Manipulation HTML via DOM
 const header = document.querySelector('.title_container');
@@ -93,13 +94,15 @@ function showMovie(_data) {
     vote.appendChild(voteElement);
 }
 
+let crewMovieData = [];
+let castMovieData = [];
 /**
  * Affichage des infos sur l'équipe du film
  * @param {Object} _data 
  */
 function showMovieCredits(_data) {
-    let crewMovieData = _data[0].crew;
-    let castMovieData = _data[0].cast;
+    crewMovieData = _data[0].crew;
+    castMovieData = _data[0].cast;
     // console.log(castMovieData);
     // console.log(crewMovieData);
     let directorMovie = '',
@@ -137,13 +140,13 @@ function showMovieCredits(_data) {
     
     castMovieData.forEach(actor => {
         if (castMovieData[indexCast].profile_path !== null) {
-            let actorPicture = document.createElement('img');
-            actorPicture.src = IMG_URL + castMovieData[indexCast].profile_path;
-            actorPicture.alt = castMovieData[indexCast].name;
-            actorPicture.classList.add('img_actor');
+            let actorPicture = createImgWithClassAndUrlAndTitle('img_actor', IMG_URL + castMovieData[indexCast].profile_path, castMovieData[indexCast].name);
+            // actorPicture.src = IMG_URL + castMovieData[indexCast].profile_path;
+            // actorPicture.alt = castMovieData[indexCast].name;
+            // actorPicture.classList.add('img_actor');
             actorsMovie.appendChild(actorPicture);
         } else {
-
+            console.log('Pas de données');
         }
         indexCast++;
     });
@@ -155,22 +158,18 @@ function showMovieCredits(_data) {
 
     directingMovie.appendChild(directingElement);
     writingMovie.appendChild(writingElement);
+    
+    new Carrousel(document.querySelector('#carrousel_actor_movie'), {
+    slidesToScroll: 1,
+    slidesVisible: 5,
+    loop: false
+    })
+
 }
 
-// Je recupère le titre recherché dans le formulaire pour le traiter
-// form.addEventListener('submit', (e) => {
-//     // document.getElementById("form").reset();
-//     e.preventDefault();
-//     const searchTerm = search.value;
-//     if(searchTerm) {
-//         getSearchMovies(searchTerm)
-//     }else{
-//         console.error('Error')
-//     }
-
-// })
-
 export {
+    crewMovieData,
+    castMovieData,
     showMovie,
     showMovieCredits
 }

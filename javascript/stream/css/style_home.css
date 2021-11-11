@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
+/*font-family: 'Kirang Haerang', cursive; Historique*/
+@import url('https://fonts.googleapis.com/css2?family=Frijole&display=swap');
+/*font-family: 'Frijole', cursive; Aventure*/
+@import url('https://fonts.googleapis.com/css2?family=Frijole&family=Nosifer&display=swap');
+/*font-family: 'Nosifer', cursive; horreur*/
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
+/*font-family: 'Henny Penny', cursive; fantastique*/
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+/*font-family: 'Pirata One', cursive; western*/
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
+/*font-family: 'Love Ya Like A Sister', cursive; comédie*/
+@import url('https://fonts.googleapis.com/css2?family=Sail&display=swap');
+/*font-family: 'Sail', cursive; Documentaire*/
+@import url('https://fonts.googleapis.com/css2?family=Faster+One&display=swap');
+/*font-family: 'Faster One', cursive; Action*/
+@import url('https://fonts.googleapis.com/css2?family=Slackey&display=swap');
+/*font-family: 'Slackey', cursive; Romance*/
+@import url('https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap');
+/*font-family: 'Freckle Face', cursive; Animation*/
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+/*font-family: 'ZCOOL KuaiLe', cursive; Mystère*/
+@import url('https://fonts.googleapis.com/css2?family=Barrio&display=swap');
+/*font-family: 'Barrio', cursive; Famille*/
+@import url('https://fonts.googleapis.com/css2?family=Lacquer&display=swap');
+/*font-family: 'Lacquer', cursive; SF*/
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+/*font-family: 'Audiowide', cursive; War*/
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+/*font-family: 'Bubblegum Sans', cursive; Thriller*/
+@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
+/*font-family: 'Ranchers', cursive; Musique*/
+@import url('https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap');
+/*font-family: 'Finger Paint', cursive; Crime*/
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+/*font-family: 'Playball', cursive; Drame*/
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&display=swap');
+/*font-family: 'IM Fell DW Pica', serif; Téléfilm*/
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background-color: #141414;
+    font-family: Helvetica, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    padding:1rem;
+    display:flex;
+    justify-content: flex-end;
+    background-color: blue;
+}
+
+.search{
+    background-color: transparent;
+    border: 2px solid black;
+    padding:0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    color:#fff;
+    font-family: inherit;
+}
+
+.search:focus{
+    outline:0;
+    background-color: green;
+}
+
+.search::placeholder{
+    color: #7378c5;
+}
+
+.title {
+    font-size: 2.5vw;
+    padding: 0.2vw 0 0.2vw 1vw;
+}
+
+.actionMovie .title {
+    font-family: 'Faster One', cursive;
+}
+.adventureMovie .title {
+    font-family: 'Frijole', cursive;
+}
+.animationMovie .title {
+    font-family: 'Freckle Face', cursive;
+}
+.comedyMovie .title {
+    font-family: 'Love Ya Like A Sister', cursive;
+}
+.crimeMovie .title {
+    font-family: 'Finger Paint', cursive;
+}
+.documentaryMovie .title {
+    font-family: 'Sail', cursive;
+}
+.dramaMovie .title {
+    font-family: 'Playball', cursive;
+}
+.familyMovie .title {
+    font-family: 'Barrio', cursive;
+}
+.fantasyMovie .title {
+    font-family: 'Henny Penny', cursive;
+}
+.historyMovie .title {
+    font-family: 'Kirang Haerang', cursive;
+}
+.horrorMovie .title {
+    font-family: 'Nosifer', cursive;
+}
+.musicMovie .title {
+    font-family: 'Ranchers', cursive;
+}
+.mysteryMovie .title {
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+.romanceMovie .title {
+    font-family: 'Slackey', cursive;
+}
+.science_fictionMovie .title {
+    font-family: 'Lacquer', cursive;
+}
+.tv_movieMovie .title {
+    font-family: 'IM Fell DW Pica', serif;
+}
+.thrillerMovie .title {
+    font-family: 'Bubblegum Sans', cursive;
+}
+.warMovie .title {
+    font-family: 'Audiowide', cursive;
+}
+.westernMovie .title {
+    font-family: 'Pirata One', cursive;
+}
+

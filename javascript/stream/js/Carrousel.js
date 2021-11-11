@@ -1,3 +1,13 @@
+import {
+    createDivWithClass,
+    createAWithClass,
+    createH2WithClassAndTxt
+} from './constructor_html.js'
+import {
+    crewMovieData,
+    castMovieData
+} from './moviesPage_v2.js'
+
 class Carrousel {
     /**
      * This callback type is called 'requestCallback' and is displayed as a global symbol.
@@ -23,8 +33,8 @@ class Carrousel {
         }, options)
         let children = [].slice.call(element.children);
         this.currentItem = 0;
-        this.root = this.createDivWithClass('carrousel_actors');
-        this.container = this.createDivWithClass('carrousel__container');
+        this.root = createDivWithClass('carrousel_actors');
+        this.container = createDivWithClass('carrousel__container');
         this.root.appendChild(this.container);
         this.element.appendChild(this.root);
         this.moveCallbacks = [];
@@ -33,9 +43,10 @@ class Carrousel {
         children.forEach(child => {
             this.items.push(child);
             if (imgIndex < this.options.slidesVisible) {
-                this.placeElementsToCarousel('carrousel__item', child);
+                debugger
+                this.placeElementsToCarousel('carrousel__item', child, imgIndex);
             } else {
-                this.placeElementsToCarousel('carrousel__item img--hidden', child);
+                this.placeElementsToCarousel('carrousel__item img--hidden', child, imgIndex);
             }
             imgIndex++;
         });
@@ -43,13 +54,12 @@ class Carrousel {
         this.moveCallbacks.forEach(cb => cb(0));
     }
 
-    placeElementsToCarousel(className, _child) {
-        let item = this.createDivWithClass(className);
-        item.style.maxHeight = "100%";
-        let itemA = this.createAWithClass('carrousel__item item__img');
+    placeElementsToCarousel(className, _child, _imgIndex) {
+        let item = createDivWithClass(className);
+        item.style.height = "100%";
+        let itemA = createAWithClass('carrousel__item item__img', 'actor_presentation.html', castMovieData[_imgIndex].id);
+        let itemName = createH2WithClassAndTxt('img__name', `${_child.alt}`);
         item.appendChild(itemA);
-        let itemName = this.createH2WithClass('img__name');
-        itemName.textContent = `${_child.alt}`;
         itemA.appendChild(_child);
         itemA.appendChild(itemName);
         this.container.appendChild(item);
@@ -57,8 +67,8 @@ class Carrousel {
 
 
     createNavigation() {
-        let nextButton = this.createDivWithClass('carrousel__next');
-        let prevButton = this.createDivWithClass('carrousel__prev');
+        let nextButton = createDivWithClass('carrousel__next');
+        let prevButton = createDivWithClass('carrousel__prev');
         this.root.appendChild(nextButton);
         this.root.appendChild(prevButton);
         nextButton.addEventListener('click', this.next.bind(this));
@@ -114,29 +124,6 @@ class Carrousel {
      */
     onMove(cb) {
         this.moveCallbacks.push(cb);
-    }
-
-    /**
-    * 
-    * @param {sting} className 
-    * @returns {HTMLElement}
-    */
-    createDivWithClass(className) {
-        let div = document.createElement('div');
-        div.setAttribute('class', className);
-        return div;
-    }
-
-    createAWithClass(className) {
-        let a = document.createElement('a');
-        a.setAttribute('class', className);
-        return a;
-    }
-
-    createH2WithClass(className) {
-        let h2 = document.createElement('h2');
-        h2.setAttribute('class', className);
-        return h2;
     }
 }
 

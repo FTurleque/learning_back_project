@@ -3,6 +3,9 @@ import {
     createH1WithClassAndTxt, 
 } from './constructor_html.js'
 import Swiper from 'https://unpkg.com/swiper@7/swiper-bundle.esm.browser.min.js'
+import {
+    caroussel_movies_actor
+} from './actorPage.js'
 
 // Constructor du Swiper
 const swiper = new Swiper(HTMLElement, {});
@@ -47,6 +50,34 @@ function swiper__element(_genre) {
     swiper__base[index].appendChild(wrapper);
     swiper__base[index].appendChild(nextMovie);
     swiper__base[index].appendChild(prevMovie);
+}
+
+function swiper__actor__element(_class, _class_name) {
+    swiper__actor(_class, _class_name);
+}
+
+function swiper__actor(_class, _class_name) {
+    let wrapper = createDivWithClass(`swiper-wrapper ${_class_name}`);
+    let nextMovie = createDivWithClass('swiper-button-next');
+    let prevMovie = createDivWithClass('swiper-button-prev');
+    _class.appendChild(wrapper);
+    _class.appendChild(nextMovie);
+    _class.appendChild(prevMovie);
+}
+
+function swiper__actor__creation() {
+    const movies = new Swiper(caroussel_movies_actor, {
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        spaceBetween: 5,
+        slidesPerView: 7,
+        // loop: true,
+        // freeMode: true,
+        speed: 500,
+    });
+
 }
 
 /**
@@ -303,4 +334,9 @@ function swiper__element(_genre) {
 
 }
 
-export {swiper_creation, swiper__constructor__withBase}
+export {
+    swiper_creation, 
+    swiper__constructor__withBase, 
+    swiper__actor__element, 
+    swiper__actor__creation
+}
