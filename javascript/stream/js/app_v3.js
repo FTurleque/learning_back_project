@@ -79,11 +79,15 @@ switch (document.body.id) {
     case 'body__actor__info':
         const actor_id = sessionStorage.getItem('id');
         swiper__actor__element(picture_actor, 'actor_item');
-        debugger
         await getActorDetails(11701);
         await getActorMovieCredits(11701);
         await getActorPictures(11701);
-        swiper_portrait_actor(actor_portrait);
+        const actor_picture_data = {
+            src_img: actor_portrait
+        };
+
+        const info_actor = {actor_picture_data, actor_info};
+        swiper_portrait_actor(info_actor);
         // await getActorDetails(actor_id)
         // await getActorDetails(11701);
         // debugger

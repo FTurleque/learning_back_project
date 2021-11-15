@@ -1,3 +1,4 @@
+import {IMG_URL} from './tmdb_v3.js'
 /**
  * Je construit une div avec une class
  * @param {class} className 
@@ -91,10 +92,11 @@ let createPWithClassAndContent = function(_className, _content) {
     document.querySelector('.' + _class).appendChild(swiperSlide);
 }
 
-function html__element__imgActor(_url, ) {
+function html__element__imgActor(_url, _data, _class) {
+    let url_actor_pict = IMG_URL + _url;
     let swiperSlide = createDivWithClass('swiper-slide');
     let aMovie = createAWithClass('item__container', 'movies_presentation.html', _data.id);
-    let imgMovie = createImgWithClassAndUrlAndTitle('picture', _data.src_img, _data.title);
+    let imgMovie = createImgWithClassAndUrlAndTitle('picture', url_actor_pict, _data.id);
     aMovie.appendChild(imgMovie);
     swiperSlide.appendChild(aMovie)
     document.querySelector('.' + _class).appendChild(swiperSlide);
@@ -107,5 +109,6 @@ export {
     createImgWithClassAndUrlAndTitle,
     createPWithClassAndContent,
     createAWithClass,
-    html__element__img
+    html__element__img,
+    html__element__imgActor
 }
