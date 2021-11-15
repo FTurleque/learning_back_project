@@ -79,13 +79,15 @@ switch (document.body.id) {
     case 'body__actor__info':
         const actor_id = sessionStorage.getItem('id');
         swiper__actor__element(picture_actor, 'actor_item');
+        debugger
+        await getActorDetails(11701);
+        await getActorMovieCredits(11701);
         await getActorPictures(11701);
         swiper_portrait_actor(actor_portrait);
         // await getActorDetails(actor_id)
         // await getActorDetails(11701);
         // debugger
         swiper__actor__element(caroussel_movies_actor, 'movies__actor');
-        await getActorMovieCredits(11701);
         swiper_movies_actor_creator(actor_credits);
         swiper__actor__creation();
         break;

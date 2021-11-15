@@ -91,6 +91,15 @@ let createPWithClassAndContent = function(_className, _content) {
     document.querySelector('.' + _class).appendChild(swiperSlide);
 }
 
+function html__element__imgActor(_url, ) {
+    let swiperSlide = createDivWithClass('swiper-slide');
+    let aMovie = createAWithClass('item__container', 'movies_presentation.html', _data.id);
+    let imgMovie = createImgWithClassAndUrlAndTitle('picture', _data.src_img, _data.title);
+    aMovie.appendChild(imgMovie);
+    swiperSlide.appendChild(aMovie)
+    document.querySelector('.' + _class).appendChild(swiperSlide);
+}
+
 export {
     createDivWithClass, 
     createH1WithClassAndTxt,

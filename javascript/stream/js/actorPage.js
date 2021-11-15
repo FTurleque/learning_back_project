@@ -25,6 +25,7 @@ let movie_cast = {
     src_img: ''
 };
 function swiper_movies_actor_creator(_data_actor) {
+    debugger
     data_cast = _data_actor[0].cast;
     data_crew = _data_actor[0].crew;
 
@@ -44,6 +45,7 @@ function swiper_movies_actor_creator(_data_actor) {
 }
 
 function swiper_portrait_actor(_data_actor) {
+    debugger
     _data_actor.forEach(portrait => {
         let url_portrait = IMG_URL + portrait.file_path;
         html__element__img(url_portrait, 'portrait');

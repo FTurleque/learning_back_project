@@ -43,7 +43,6 @@ class Carrousel {
         children.forEach(child => {
             this.items.push(child);
             if (imgIndex < this.options.slidesVisible) {
-                debugger
                 this.placeElementsToCarousel('carrousel__item', child, imgIndex);
             } else {
                 this.placeElementsToCarousel('carrousel__item img--hidden', child, imgIndex);
