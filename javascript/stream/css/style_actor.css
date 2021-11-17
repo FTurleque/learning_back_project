@@ -42,3 +42,13 @@ body {
     display: flex;
     justify-content: space-between;
 }
+
+table{
+    border-collapse: collapse
+}
+  
+td{
+    border: 1px solid white;
+    padding: 10px;
+}
+  

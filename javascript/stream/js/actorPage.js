@@ -25,6 +25,12 @@ let movie_cast = {
     title: '',
     src_img: ''
 };
+
+let gender = [
+    'Homme',
+    'Femme'
+]
+
 function swiper_movies_actor_creator(_data_actor) {
     data_cast = _data_actor[0].cast;
     data_crew = _data_actor[0].crew;
@@ -34,8 +40,6 @@ function swiper_movies_actor_creator(_data_actor) {
         movie_cast.id = movie.id;
         movie_cast.src_img = IMG_URL + movie.poster_path;
         html__element__img(movie_cast, 'movies__actor');
-        // poster_path
-        // id
     });
 
     // data_crew.forEach(movie => {
@@ -44,16 +48,17 @@ function swiper_movies_actor_creator(_data_actor) {
     // });
 }
 
-function actor_info() {
-    actor_name = ``;
-    gender_actor = ``;
-    birthdate_actor = ``;
-    birthplace_actor = ``;
-    alias_actor = ``;
-    bio_actor = ``;
+function actor_info_creation(_data) {
+    actor_name.textContent = `${_data.name}`;
+    birthdate_actor.textContent = `${_data.birthday}`;
+    birthplace_actor.textContent = `${_data.place_of_birth}`;
+    // alias_actor.textContent = ``;
+    // gender_actor.textContent = ``
+    bio_actor.textContent = `${_data.biography}`;
 }
 export {
     picture_actor,
     caroussel_movies_actor, 
-    swiper_movies_actor_creator
+    swiper_movies_actor_creator,
+    actor_info_creation
 }

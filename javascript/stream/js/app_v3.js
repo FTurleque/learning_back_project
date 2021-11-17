@@ -30,7 +30,8 @@ import {
 import {
     picture_actor,
     caroussel_movies_actor,
-    swiper_movies_actor_creator
+    swiper_movies_actor_creator,
+    actor_info_creation
 } from './actorPage.js'
 
 switch (document.body.id) {
@@ -94,6 +95,8 @@ switch (document.body.id) {
         swiper__actor__element(caroussel_movies_actor, 'movies__actor');
         swiper_movies_actor_creator(actor_credits);
         swiper__actor__creation();
+        actor_info_creation(actor_info);
+
         break;
 
     default:
