@@ -85,7 +85,7 @@ switch (document.body.id) {
         const actor_picture_data = {
             src_img: actor_portrait
         };
-
+        debugger
         const info_actor = {actor_picture_data, actor_info};
         swiper_portrait_actor(info_actor);
         // await getActorDetails(actor_id)
