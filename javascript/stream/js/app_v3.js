@@ -20,7 +20,8 @@ import {
     swiper_creation, 
     swiper__constructor__withBase,
     swiper__actor__element,
-    swiper__actor__creation
+    swiper__actor__creation,
+    swiper_portrait_actor
 } from './swiper_elements.js'
 import {
     showMovie,
@@ -28,7 +29,6 @@ import {
 } from './moviesPage_v2.js'
 import {
     picture_actor,
-    swiper_portrait_actor,
     caroussel_movies_actor,
     swiper_movies_actor_creator
 } from './actorPage.js'

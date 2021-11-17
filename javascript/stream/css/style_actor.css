@@ -17,15 +17,22 @@ body {
 
 .informations {
     width: 25%;
+    padding: 10px;
 }
 
 .picture__actor {
+    max-width: 100%;
+    height: auto;
     display: flex;
 }
 
-.picture__actor img {
+.picture {
     max-width: 100%;
 }
+
+/* .picture__actor img {
+    max-width: 100%;
+} */
 
 .actor__works {
     max-width: 75%;
@@ -43,11 +50,6 @@ body {
 
 .movies__actor {
     /* max-height: 100%; */
-}
-
-.picture {
-    height: 300px;
-    width: auto;
 }
 
 .departement__pro li {

@@ -1,10 +1,12 @@
 import {
     createDivWithClass, 
     createH1WithClassAndTxt, 
+    html__element__imgActor
 } from './constructor_html.js'
 import Swiper from 'https://unpkg.com/swiper@7/swiper-bundle.esm.browser.min.js'
 import {
-    caroussel_movies_actor
+    caroussel_movies_actor,
+    picture_actor
 } from './actorPage.js'
 
 // Constructor du Swiper
@@ -65,6 +67,31 @@ function swiper__actor(_class, _class_name) {
     _class.appendChild(prevMovie);
 }
 
+let pict_actor = [];
+function swiper_portrait_actor(_data_actor) {
+    pict_actor = _data_actor.actor_picture_data;
+    for (let i = 0; i < pict_actor.src_img.length; i++) {
+        let url_portrait = pict_actor.src_img[i].file_path;
+        html__element__imgActor(url_portrait, _data_actor.actor_info, 'actor_item');
+    }
+    swiper__actorPict__creation()
+}
+
+function swiper__actorPict__creation() {
+    const portraits = new Swiper(picture_actor, {
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        slidesPerView: 1,
+        // loop: true,
+        // freeMode: true,
+        speed: 500,
+    });
+
+}
+
+
 function swiper__actor__creation() {
     const movies = new Swiper(caroussel_movies_actor, {
         navigation: {
@@ -79,6 +106,7 @@ function swiper__actor__creation() {
     });
 
 }
+
 
 /**
  * Je construit les sliders avec l'API swiper
@@ -338,5 +366,6 @@ export {
     swiper_creation, 
     swiper__constructor__withBase, 
     swiper__actor__element, 
-    swiper__actor__creation
+    swiper__actor__creation,
+    swiper_portrait_actor
 }

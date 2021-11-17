@@ -44,19 +44,16 @@ function swiper_movies_actor_creator(_data_actor) {
     // });
 }
 
-let pict_actor = [];
-function swiper_portrait_actor(_data_actor) {
-    pict_actor = _data_actor.actor_picture_data;
-    for (let i = 0; i < pict_actor.src_img.length; i++) {
-        let url_portrait = pict_actor.src_img[i].file_path;
-        html__element__imgActor(url_portrait, _data_actor.actor_info, 'actor_item');
-    }
+function actor_info() {
+    actor_name = ``;
+    gender_actor = ``;
+    birthdate_actor = ``;
+    birthplace_actor = ``;
+    alias_actor = ``;
+    bio_actor = ``;
 }
-
-
 export {
     picture_actor,
     caroussel_movies_actor, 
-    swiper_movies_actor_creator,
-    swiper_portrait_actor
+    swiper_movies_actor_creator
 }
