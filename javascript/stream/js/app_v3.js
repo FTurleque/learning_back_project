@@ -40,7 +40,7 @@ switch (document.body.id) {
          * Je manipule le DOM et je construit les elements de base pour mes sliders
          */
         swiper__constructor__withBase();
-
+    debugger
         /**
          * @param {number} x Nombre de page souhaité
          */

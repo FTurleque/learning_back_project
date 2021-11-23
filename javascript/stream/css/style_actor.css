@@ -63,8 +63,8 @@ body {
     font-family: 'Macondo', cursive;
     font-size: 1.7vw;
     text-align: justify;
-    height: 460px;
-    overflow: hidden;
+    /* height: 460px; */
+    /* overflow: hidden; */
 }
 
 .read__more {
@@ -81,11 +81,11 @@ body {
 
 /*Slider movies*/
 .caroussel__movies__actor {
-    /* height: 230px; */
+    
 }
 
 .movies__actor {
-    /* max-height: 100%; */
+    
 }
 
 .departement__pro li {
