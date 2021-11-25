@@ -1,4 +1,6 @@
 import {IMG_URL} from './tmdb_v3.js'
+import {department_of_movies} from './actorPage.js'
+
 /**
  * Je construit une div avec une class
  * @param {class} className 
@@ -78,6 +80,58 @@ let createPWithClassAndContent = function(_className, _content) {
     return p;
 }
 
+let createTableWithClass = function(_className) {
+    let table = document.createElement('table');
+    table.setAttribute('class', _className)
+    return table;
+}
+
+function html__department__movie(_data) {
+    const table_department_pro = createTableWithClass(_data.department);
+    department_of_movies.appendChild(table_department_pro);
+    html__table__header();
+    for (let i = 0; i < _data.movie.lenght; i++) {
+        html__table__content(_data);
+    }
+}
+
+function html__table__header() {
+    let tr = document.createElement('tr');
+    let year = document.createElement('td');
+    year.getAttribute('class', 'year');
+    year.textContent = 'Année';
+    let movie_names = document.createElement('td');
+    movie_names.getAttribute('class', 'name');
+    movie_names.textContent = 'Nom de film';
+    let role = document.createElement('td');
+    role.getAttribute('class', 'role');
+    role.textContent = 'Rôle';
+    tr.appendChild(year);
+    tr.appendChild(movie_names);
+    tr.appendChild(role);
+    table_department_pro.appendChild(tr);
+}
+
+function html__table__content(_data) {
+    let tr = document.createElement('tr');
+    let year = document.createElement('td');
+    year.getAttribute('class', 'movie_year');
+    year.textContent = `${_data}`;
+    let movie_name = document.createElement('td');
+    movie_name.getAttribute('class', 'movie_name');
+    let name = document.createElement('a');
+    name.setAttribute('class', 'name')
+    name.textContent = `${_data}`;
+    let role = document.createElement('td');
+    role.getAttribute('class', 'movie_role');
+    role.textContent = `${_data}`;
+    movie_name.appendChild(name);
+    tr.appendChild(year);
+    tr.appendChild(movie_name);
+    tr.appendChild(role);
+    table_department_pro.appendChild(tr);
+}
+
 /**
  * Je construit les élément HTML pour afficher les Images
  * @param {data} _data Data du film
@@ -102,6 +156,12 @@ function html__element__imgActor(_url, _data, _class) {
     document.querySelector('.' + _class).appendChild(swiperSlide);
 }
 
+// function html__actor__department(_data) {
+//     let table = document.createElement('table');
+//     table.setAttribute('lass', _data);
+//     html__department__info()
+// }
+
 export {
     createDivWithClass, 
     createH1WithClassAndTxt,
@@ -110,5 +170,9 @@ export {
     createPWithClassAndContent,
     createAWithClass,
     html__element__img,
-    html__element__imgActor
+    html__element__imgActor,
+    createTableWithClass,
+    html__table__header,
+    html__table__content,
+    html__department__movie
 }

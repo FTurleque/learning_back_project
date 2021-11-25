@@ -1,17 +1,21 @@
 import { 
     html__element__img,
-    html__element__imgActor
+    html__element__imgActor,
+    createTableWithClass,
+    html__table__header,
+    html__table__content,
+    html__department__movie
 } from './constructor_html.js'
 import {
     IMG_URL
 } from './tmdb_v3.js'
 
 const picture_actor = document.querySelector('.picture__actor');
-const gender_actor = document.querySelector('.gender')
+// const gender_actor = document.querySelector('.gender')
 const birthdate_actor = document.querySelector('.birthdate')
-const dateOfDeath_actor = document.querySelector('.dateOfDeath')
+// const dateOfDeath_actor = document.querySelector('.dateOfDeath')
 const birthplace_actor = document.querySelector('.birthplace')
-const alias_actor = document.querySelector('.alias')
+// const alias_actor = document.querySelector('.alias')
 const actor_name = document.querySelector('.actor__name')
 const bio_actor = document.querySelector('.bio__actor')
 const caroussel_movies_actor = document.querySelector('.caroussel__movies__actor')
@@ -56,9 +60,17 @@ function actor_info_creation(_data) {
     // gender_actor.textContent = ``
     bio_actor.textContent = `${_data.biography}`;
 }
+
+function actor_work_department(_data) {
+    for (let i = 0; i < _data.department.lenght; i++) {
+        html__department__movie(_data);
+    }
+}
+
 export {
     picture_actor,
     caroussel_movies_actor, 
+    department_of_movies,
     swiper_movies_actor_creator,
     actor_info_creation
 }
