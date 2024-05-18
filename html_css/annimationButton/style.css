@@ -1,0 +1,103 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+	width: 100%;
+	background-image: linear-gradient(45deg, #9e3939, rgb(197, 226, 238));
+}
+html {
+	font-family: sans-serif;
+}
+div {
+	margin-bottom: 48px;
+}
+div:last-child {
+	margin-bottom: 0;
+}
+/* styliser les btn */
+
+.btn {
+	position: relative;
+	padding: 22px 64px;
+	font-size: 22px;
+	color: #fff;
+	letter-spacing: 16px;
+	text-transform: uppercase;
+	transition: all 400ms ease-in-out;
+	cursor: pointer;
+	user-select: none;
+}
+.btn::before, .btn::after {
+	content: '';
+	position: absolute;
+	transition: inherit;
+	z-index: -1;
+}
+.btn:hover {
+	color: #96b7c4;
+	transition-delay: .6s;
+}
+.btn:hover::before {
+	transition-delay: 0s;
+}
+
+.btn:hover::after {
+	background: #fff;
+	transition-delay: .4s;
+}
+
+/* Animation Top */
+
+.animTop::before,
+.animTop::after {
+	left: 0;
+	height: 0;
+	width: 100%;
+}
+.animTop::before {
+	bottom: 0;
+	border: 1px solid #fff;
+	border-top: 0;
+	border-bottom: 0;
+}
+.animTop::after {
+	top: 0;
+}
+
+.animTop:hover::before,
+.animTop:hover::after {
+height: 100%;
+}
+
+/* Anim Droite */
+
+.animDroite::before,
+.animDroite::after {
+	top: 0;
+	width: 0;
+	height: 100%;
+}
+
+.animDroite::before {
+	left: 0;
+	border: 1px solid #fff;
+	border-left: 0;
+	border-right: 0;
+}
+
+.animDroite::after {
+	right: 0;
+}
+
+.animDroite:hover::before,
+.animDroite:hover::after {
+	width: 100%;
+}

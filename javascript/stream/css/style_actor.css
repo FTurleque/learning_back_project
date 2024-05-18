@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+/* font-family: 'Macondo', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@100&display=swap');
+/* font-family: 'Grandstander', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap');
+/* font-family: 'Lobster Two', cursive; */
+
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    background-color: #141414;
+    color: white;
+    padding: 5px 5px 0 5px;
+    display: flex;
+}
+
+.informations {
+    width: 25%;
+    padding: 1vw;
+}
+
+.info__actor {
+    list-style-type: none;
+    font-family: 'Macondo', cursive;
+    font-size: 20px;
+}
+
+.info__actor strong {
+    font-family: 'Lobster Two', cursive;
+    font-size: 2vw;
+}
+
+.actor__works {
+    max-width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+.actor__name {
+    font-family: 'Lobster Two', cursive;
+    font-size: 5vw;
+    text-align: center;
+    display: flex;
+    align-self: center;
+    padding: 1vw;
+}
+
+.bio__actor__container {
+    padding-bottom: 1vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.bio__actor {
+    margin: 1vw;
+    font-family: 'Macondo', cursive;
+    font-size: 1.7vw;
+    text-align: justify;
+    /* height: 460px; */
+    /* overflow: hidden; */
+}
+
+.read__more {
+    text-align: right;
+}
+
+.read__more__forClick {
+    text-decoration: none;
+    padding-right: 1vw;
+    font-size: 15px;
+    color: white;
+}
+
+
+/*Slider movies*/
+.caroussel__movies__actor {
+    
+}
+
+.movies__actor {
+    
+}
+
+.departement__pro li {
+    display: flex;
+    justify-content: space-between;
+}
+
+table{
+    border-collapse: collapse
+}
+  
+td{
+    border: 1px solid white;
+    padding: 10px;
+}
+  
